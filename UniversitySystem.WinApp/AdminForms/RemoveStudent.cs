@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UniversitySystem.WinApp.PersonnelForms
+namespace UniversitySystem.WinApp.AdminForms
 {
-    public partial class StudentMain : Form
+    public partial class RemoveStudent : Form
     {
-        public StudentMain()
+        public RemoveStudent()
         {
             InitializeComponent();
         }

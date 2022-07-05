@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UniversitySystem.WinApp
+namespace UniversitySystem.WinApp.PersonnelForms
 {
-    public partial class FormPersonnel : Form
+    public partial class Selectionlesson : Form
     {
-        public FormPersonnel()
+        public Selectionlesson()
         {
             InitializeComponent();
         }

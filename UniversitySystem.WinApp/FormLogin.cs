@@ -26,33 +26,49 @@ namespace UniversitySystem.WinApp
             User user = new User();
             var username = Convert.ToInt32(txtUsername.Text);
             var password = txtPassword.Text;
-            var result = service.Login(username, password , user);
 
 
-            if (result)
+            if( user.FlagPass != true)
             {
-                if(user.Poss == 400)
+                var result = service.Login(username, password , user);
+                if (result)
                 {
-                    StudentMain studentMain = new StudentMain();
-                    studentMain.Show();
-                    this.Hide();
+                    if(user.Poss == 400)
+                    {
+                        StudentMain studentMain = new StudentMain();
+                        studentMain.user = user;
+                        studentMain.Show();
+                        this.Hide();
 
+                    }
+                    else if( user.Poss == 300)
+                    {
+                        Admin admin = new Admin();
+                        admin.user = user;
+                        admin.Show();
+                        this.Hide();
+                    }
                 }
-                else if( user.Poss == 300)
+                else
                 {
-                    FormPersonnel formPersonnel = new FormPersonnel();
-                    formPersonnel.Show();
-                    this.Hide();
+                    txtUsername.Text = "";
+                    txtPassword.Text = "";
+                    MessageBox.Show("Invalid Username Or Password");
                 }
             }
             else
             {
-                txtUsername.Text = "";
-                txtPassword.Text = "";
-                MessageBox.Show("Invalid Username Or Password");
+
             }
 
+
+
             
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

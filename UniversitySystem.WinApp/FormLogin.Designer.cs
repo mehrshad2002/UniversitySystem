@@ -34,11 +34,12 @@
             this.labelCardID = new System.Windows.Forms.Label();
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelLogin = new System.Windows.Forms.Label();
+            this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(345, 238);
+            this.btnLogin.Location = new System.Drawing.Point(247, 249);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(112, 34);
             this.btnLogin.TabIndex = 0;
@@ -88,11 +89,22 @@
             this.labelLogin.TabIndex = 5;
             this.labelLogin.Text = "Login";
             // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(429, 249);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(112, 34);
+            this.btnExit.TabIndex = 6;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 353);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.labelLogin);
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.labelCardID);
@@ -100,7 +112,7 @@
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.btnLogin);
             this.Name = "FormLogin";
-            this.Text = "FormLogin";
+            this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,5 +126,6 @@
         private Label labelCardID;
         private Label labelPassword;
         private Label labelLogin;
+        private Button btnExit;
     }
 }
