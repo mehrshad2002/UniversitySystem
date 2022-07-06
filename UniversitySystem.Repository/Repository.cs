@@ -7,21 +7,6 @@ namespace UniversitySystem.Repository
 {
     public class Repository
     {
-        public void Create(string name)
-        {
-            // sqlConnection
-            // query : Insert : client data
-            // sqlCommand (query )
-        }
-
-        public void Update()
-        {
-            // sqlConnection
-            // query : Update : client data
-            // sqlCommand (query )
-        }
-
-        //Create Student --> C
         public bool AddStudent(User newUser)
         {
             string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
@@ -40,22 +25,127 @@ namespace UniversitySystem.Repository
             {
                 return false;
             }
-            //querystring = $"select * from Users where ID = {newUser.CardID} and password = {newUser.Password}";
-            //SqlCommand cmd2 = new SqlCommand(querystring, con);
+            return true;
+        }
 
-            //SqlDataAdapter adapter = new SqlDataAdapter(cmd2);//for read table from db 
-            //DataSet tables = new DataSet(); //can read data from row and column 
-            //adapter.Fill(tables);
+        public bool RemoveTeacher(string name, int ID)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+
+            string querystring = "delete from Teacher " +
+                $"where ID = {ID} and Name = '{name}' ";
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            try
+            {
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool AddTeacher(User user)
+        {
+
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "Insert into Teacher " +
+                $" Values({user.CardID} , '{user.Name}' , '{user.Password}' , {user.CollegeID})";
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            try
+            {
+                cmd.ExecuteNonQuery();
+                return true; 
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        public bool EditUser(User editUser , User user)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+
+            string querystring = "update Users " +
+                $"set ID = {editUser.CardID} , Name = '{editUser.Name}' , College_ID = {editUser.CollegeID} , Password = '{editUser.Password}'" +
+                $" where ID = {user.CardID}";
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool SearchUser(string name, int ID , User user)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+
+            string querystring = $"select * from Users " +
+                $"where ID = {ID} and Name = '{name}' ";
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataSet tables = new DataSet();
+            adapter.Fill(tables);
+            var x = tables.Tables[0].Rows;
 
 
-            //var x = tables.Tables[0].Rows;
-            //foreach( DataRow row in x)
-            //{
-            //    var id = row["ID"];
-            //    var name = row["Name"];
-            //    var password = row["Password"];
-            //    var CollegeID = row["College_ID"];
-            //}
+            foreach (DataRow Row in x)
+            {
+                try
+                {
+                    user.CardID = Convert.ToInt32(Row["ID"]);
+                    user.Name = Convert.ToString(Row["Name"]);
+                    user.CollegeID = Convert.ToInt32(Row["College_ID"]);
+                    user.Password = Convert.ToString(Row["Password"]);
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+
+        }
+
+        public bool DeleteUser(int ID, string Name)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "delete from Users " +
+                $"where Name = '{Name}' and ID = {ID} ";
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            try
+            {
+                cmd.ExecuteNonQuery();
+                
+            }catch( Exception e)
+            {
+                return false;
+            }
+
             return true;
         }
 
@@ -94,21 +184,6 @@ namespace UniversitySystem.Repository
             }
             return list;
         }
-
-        public void Dalete()
-        {
-            // sqlConnection
-            // query : Delete : client data
-            // sqlCommand (query )
-        }
-
-        public void Read()
-        {
-            // sqlConnection
-            // query : Select : client data
-            // sqlCommand (query )
-        }
-
 
         public bool Login(int UserID, string password , User user)
         {

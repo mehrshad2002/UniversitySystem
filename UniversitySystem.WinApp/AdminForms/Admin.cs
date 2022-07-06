@@ -40,13 +40,41 @@ namespace UniversitySystem.WinApp
         private void btnShowStudents_Click(object sender, EventArgs e)
         {
             ShowAllStudents showAll = new ShowAllStudents();
+            this.Close();
             showAll.Show();
         }
 
         private void btnRemoveStudent_Click(object sender, EventArgs e)
         {
-            RemoveStudent removeStudent = new RemoveStudent();
+            RemoveUser removeStudent = new RemoveUser();
+            this.Close();
             removeStudent.Show();
+        }
+
+        private void btnEditData_Click(object sender, EventArgs e)
+        {
+            EditUser editUser = new EditUser();
+            this.Close();
+            editUser.Show();
+        }
+
+        private void btnAddUnivercity_Click(object sender, EventArgs e)
+        {
+            ServiceClass Service = new ServiceClass();
+        }
+
+        private void btnAddTeacher_Click(object sender, EventArgs e)
+        {
+            AddTeacher addTeacher = new AddTeacher();
+            addTeacher.Show();
+            this.Close();
+        }
+
+        private void btnRemoveTeacher_Click(object sender, EventArgs e)
+        {
+            RemoveTecher removeTecher = new RemoveTecher();
+            this.Close();
+            removeTecher.Show();
         }
     }
 }

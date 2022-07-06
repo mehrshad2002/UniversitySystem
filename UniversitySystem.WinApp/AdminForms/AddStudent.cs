@@ -28,10 +28,10 @@ namespace UniversitySystem.WinApp.AdminForms
         private void btnSave_Click(object sender, EventArgs e)
         {
             NewUser = new User();
-            var name = textBoxName.Text;
-            var StudentID = Convert.ToInt32(textBoxStudentID.Text);
-            var CollegeID = Convert.ToInt32(textBoxCollegeID.Text);
-            var Password = textBoxPassword.Text;
+            string name = textBoxName.Text;
+            int StudentID = Convert.ToInt32(textBoxStudentID.Text);
+            string Password = textBoxPassword.Text;
+            int CollegeID = Convert.ToInt32((comboBoxCollegeID.Text).Substring(0,4)); 
 
             //Add Value To NewUser
             NewUser.Password = Password;
@@ -47,17 +47,20 @@ namespace UniversitySystem.WinApp.AdminForms
             {
                 MessageBox.Show("Done!");
                 textBoxName.ResetText();
-                textBoxCollegeID.ResetText();
+                comboBoxCollegeID.ResetText();
                 textBoxPassword.ResetText();
                 textBoxStudentID.ResetText();
+                comboBoxCollegeID.ResetText();
             }
             else
             {
                 MessageBox.Show("Faild!\nSame Student_ID Or Invalid Data.\nPlease Check Student ID first");
                 textBoxName.ResetText();
-                textBoxCollegeID.ResetText();
+                comboBoxCollegeID.ResetText();
                 textBoxPassword.ResetText();
                 textBoxStudentID.ResetText();
+                comboBoxCollegeID.ResetText();
+
             }
 
 
@@ -68,6 +71,10 @@ namespace UniversitySystem.WinApp.AdminForms
             Admin admin = new Admin();
             this.Close();
             admin.Show();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 }
