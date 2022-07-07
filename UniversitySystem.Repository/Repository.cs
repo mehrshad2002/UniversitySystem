@@ -19,13 +19,155 @@ namespace UniversitySystem.Repository
             SqlCommand cmd = new SqlCommand(querystring, con);
             try
             {
-                cmd.ExecuteNonQuery();
-
-            }catch( Exception e)
+                 cmd.ExecuteNonQuery();
+            }
+            catch( Exception e)
             {
                 return false;
             }
             return true;
+        }
+
+        public string SayUnivercityName(int ID)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "select * from Univercity " +
+                $"where ID = {ID} ";
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);//for read table from db 
+            DataSet tables = new DataSet(); //can read data from row and column 
+            adapter.Fill(tables);
+            var AllRows = tables.Tables[0].Rows;
+
+            foreach(DataRow Row in AllRows)
+            {
+                string Name = Convert.ToString(Row["Name"]);
+                return Name ;
+            }
+            return "NO";
+        }
+
+        public List<College> ReadAllCollege()
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "select * from College  ";
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);//for read table from db 
+            DataSet tables = new DataSet(); //can read data from row and column 
+            adapter.Fill(tables);
+            var AllRows = tables.Tables[0].Rows;
+
+            List<College> AllCollege = new List<College>();
+            foreach(DataRow Row in AllRows)
+            {
+                College college = new College();
+                college.Name = Convert.ToString(Row["Name"]);
+                college.Id = Convert.ToInt32(Row["ID"]);
+                college.UnivercityID = Convert.ToInt32(Row["UnivercityID"]);
+                AllCollege.Add(college);
+            }
+            return AllCollege;
+        }
+
+        public List<Univercity> ReadAllUnivercity()
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+
+            string querystring = "select * from Univercity ";
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            cmd.ExecuteNonQuery();
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);//for read table from db 
+            DataSet tables = new DataSet(); //can read data from row and column 
+            adapter.Fill(tables);
+            var AllRows = tables.Tables[0].Rows;
+
+            List<Univercity> UnivercityList = new List<Univercity>();
+
+            foreach ( DataRow Row in AllRows)
+            {
+                string Name = Convert.ToString(Row["Name"]);
+                int ID = Convert.ToInt32(Row["ID"]);
+
+                Univercity univercity = new Univercity(ID , Name);
+                UnivercityList.Add(univercity);
+            }
+
+            return UnivercityList; 
+        }
+
+        public bool DeleteCollege(int CollegeID )
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+
+            string querystring = $"delete from College where ID = {CollegeID}";
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            int Result = cmd.ExecuteNonQuery();
+            if( Result != 0 )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool AddCollege(College college)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+
+            string querystring = "insert into College " +
+                $"Values({college.Id},'{college.Name}',{college.UnivercityID})";
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            int Result = cmd.ExecuteNonQuery();
+
+            if( Result != 0 )
+            {
+                return true ;
+            }
+            else
+            {
+                return false ;
+            }
+        }
+
+        public int FinUnivercityID(string FindUnivercityID)
+        {
+            //Search Univercity by Name 
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+
+            string querystring = "select * " +
+                $"from Univercity  " +
+                $"where Name = '{FindUnivercityID}' ";
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataSet tables = new DataSet();
+            adapter.Fill(tables);
+            var AllRows = tables.Tables[0].Rows;
+
+
+            foreach(DataRow Row in AllRows)
+            {
+                int Value =  Convert.ToInt32(Row["ID"]);
+                return Value ;
+            }
+
+            return 0 ;
         }
 
         public bool RemoveTeacher(string name, int ID)
@@ -40,10 +182,38 @@ namespace UniversitySystem.Repository
             SqlCommand cmd = new SqlCommand(querystring, con);
             try
             {
+                var Result = cmd.ExecuteNonQuery();
+                if( Result == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch( Exception e)
+            {
+                return false;
+            }
+
+
+        }
+
+        public bool AddUnivercity(Univercity univercity)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "insert into Univercity " +
+                $"Values({univercity.Id} , '{univercity.Name}')";
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            try
+            {
                 cmd.ExecuteNonQuery();
                 return true;
-            }
-            catch
+            }catch( Exception e)
             {
                 return false;
             }
@@ -105,10 +275,10 @@ namespace UniversitySystem.Repository
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataSet tables = new DataSet();
             adapter.Fill(tables);
-            var x = tables.Tables[0].Rows;
+            var AllRows = tables.Tables[0].Rows;
 
 
-            foreach (DataRow Row in x)
+            foreach (DataRow Row in AllRows)
             {
                 try
                 {
@@ -139,14 +309,20 @@ namespace UniversitySystem.Repository
             SqlCommand cmd = new SqlCommand(querystring, con);
             try
             {
-                cmd.ExecuteNonQuery();
-                
-            }catch( Exception e)
+                var Result = cmd.ExecuteNonQuery();
+                if (Result == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch( Exception e)
             {
                 return false;
             }
-
-            return true;
         }
 
         public List<User> ShowAllData()
@@ -164,8 +340,8 @@ namespace UniversitySystem.Repository
             adapter.Fill(tables);
 
             List<User> list = new List<User>(); 
-            var x = tables.Tables[0].Rows;
-            foreach (DataRow row in x)
+            var AllRows = tables.Tables[0].Rows;
+            foreach (DataRow row in AllRows)
             {
                 User user = new User();
 

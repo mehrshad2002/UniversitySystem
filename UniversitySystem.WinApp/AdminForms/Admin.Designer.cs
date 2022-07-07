@@ -120,6 +120,7 @@
             this.button2.TabIndex = 7;
             this.button2.Text = "Remove College";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -129,6 +130,7 @@
             this.button3.TabIndex = 8;
             this.button3.Text = "Add College";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnAddTeacher
             // 

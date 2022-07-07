@@ -24,14 +24,49 @@ namespace UniversitySystem.Services
             return repository.ShowAllData();
         }
 
+        public List<College> ReadAllCollege()
+        {
+            return repository.ReadAllCollege();
+        }
+
+        public string SayUnivercityName(int ID)
+        {
+            return repository.SayUnivercityName( ID );
+        }
+
         public bool DeleteUser(int ID, string Name)
         {
             return repository.DeleteUser(ID , Name );
         }
 
+        public List<Univercity> ReadAllUnivercity()
+        {
+            return repository.ReadAllUnivercity();
+        }
+
         public bool SearchUser(string name, int ID , User user)
         {
             return repository.SearchUser(name, ID , user );
+        }
+
+        public int FindUnivercityID(string findUnivercityID )
+        {
+            return repository.FinUnivercityID(findUnivercityID);
+        }
+
+        public bool AddCollege(College college)
+        {
+            return repository.AddCollege(college);
+        }
+
+        public bool DeleteCollege(int CollegeID)
+        {
+            return repository.DeleteCollege(CollegeID);
+        }
+
+        public bool AddUnivercity(Univercity univercity)
+        {
+            return repository.AddUnivercity(univercity);
         }
 
         public bool RemoveTeacher(string name, int ID )

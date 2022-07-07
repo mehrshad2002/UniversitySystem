@@ -11,36 +11,35 @@ using UniversitySystem.Classes;
 using UniversitySystem.Services;
 using UniversitySystem.WinApp.AdminForms;
 
-
 namespace UniversitySystem.WinApp.AdminForms
 {
-    public partial class RemoveTecher : Form
+    public partial class AddUnivercity : Form
     {
-        public RemoveTecher()
+        public AddUnivercity()
         {
             InitializeComponent();
         }
 
-        private void btnRemove_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
+            Univercity univercity = new Univercity();
+            univercity.Name = textBoxName.Text;
+            univercity.Id = Convert.ToInt32(textBoxID.Text);
+
             ServiceClass service = new ServiceClass();
-
-            string Name = txtName.Text;
-            int ID = Convert.ToInt32(txtID.Text);
-
-            bool Result = service.RemoveTeacher(Name , ID );
+            bool Result = service.AddUnivercity(univercity);
 
             if( Result)
             {
-                MessageBox.Show("Done!");
-                txtID.ResetText();
-                txtName.ResetText();
+                MessageBox.Show("Univercity Was Created !");
+                textBoxID.ResetText();
+                textBoxName.ResetText();
             }
             else
             {
-                MessageBox.Show("Faild,Please Check ID and Name.");
-                txtID.ResetText();
-                txtName.ResetText();
+                MessageBox.Show("Faild!");
+                textBoxID.ResetText();
+                textBoxName.ResetText();
             }
         }
 

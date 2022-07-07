@@ -38,6 +38,7 @@
             this.College_ID = new System.Windows.Forms.Label();
             this.Student_ID = new System.Windows.Forms.Label();
             this.comboBoxCollegeID = new System.Windows.Forms.ComboBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -167,5 +168,6 @@
         private Label College_ID;
         private Label Student_ID;
         private ComboBox comboBoxCollegeID;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

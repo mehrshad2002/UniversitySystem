@@ -60,7 +60,10 @@ namespace UniversitySystem.WinApp
 
         private void btnAddUnivercity_Click(object sender, EventArgs e)
         {
-            ServiceClass Service = new ServiceClass();
+            AddUnivercity addUnivercity = new AddUnivercity();
+            this.Close();
+            addUnivercity.Show();
+
         }
 
         private void btnAddTeacher_Click(object sender, EventArgs e)
@@ -75,6 +78,22 @@ namespace UniversitySystem.WinApp
             RemoveTecher removeTecher = new RemoveTecher();
             this.Close();
             removeTecher.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
+            AddCollege addCollege = new AddCollege();
+            this.Close();
+            addCollege.Show();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            RemoveCollege removeCollege = new RemoveCollege();
+            this.Close();
+            removeCollege.Show();
         }
     }
 }
