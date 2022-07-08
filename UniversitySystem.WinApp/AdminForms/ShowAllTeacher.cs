@@ -32,6 +32,13 @@ namespace UniversitySystem.WinApp.AdminForms
 
         private void btnEdit_Click(object sender, EventArgs e)//search btn 
         {
+            //FOR CORRECT DATA
+            if(txtID.Text == "")
+            {
+                txtID.Text = "0";
+            }
+
+
             int ID = Convert.ToInt32(txtID.Text);
             ServiceClass service = new ServiceClass();
             EditTeacher editteacher = new EditTeacher();
@@ -49,8 +56,6 @@ namespace UniversitySystem.WinApp.AdminForms
                 this.Close();
                 editteacher.Show();
             }
-            editteacher.teacher.ID = ID;
-
         }
     }
 }

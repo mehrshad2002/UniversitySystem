@@ -40,6 +40,7 @@
             this.btnAddTeacher = new System.Windows.Forms.Button();
             this.btnRemoveTeacher = new System.Windows.Forms.Button();
             this.btnShowAllTeacher = new System.Windows.Forms.Button();
+            this.btnRoom = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAddStudent
@@ -163,11 +164,22 @@
             this.btnShowAllTeacher.UseVisualStyleBackColor = true;
             this.btnShowAllTeacher.Click += new System.EventHandler(this.btnShowAllTeacher_Click);
             // 
+            // btnRoom
+            // 
+            this.btnRoom.Location = new System.Drawing.Point(541, 201);
+            this.btnRoom.Name = "btnRoom";
+            this.btnRoom.Size = new System.Drawing.Size(229, 50);
+            this.btnRoom.TabIndex = 12;
+            this.btnRoom.Text = "Add Room";
+            this.btnRoom.UseVisualStyleBackColor = true;
+            this.btnRoom.Click += new System.EventHandler(this.btnRoom_Click);
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(993, 450);
+            this.Controls.Add(this.btnRoom);
             this.Controls.Add(this.btnShowAllTeacher);
             this.Controls.Add(this.btnRemoveTeacher);
             this.Controls.Add(this.btnAddTeacher);
@@ -200,5 +212,6 @@
         private Button btnAddTeacher;
         private Button btnRemoveTeacher;
         private Button btnShowAllTeacher;
+        private Button btnRoom;
     }
 }

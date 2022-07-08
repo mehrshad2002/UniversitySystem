@@ -101,5 +101,12 @@ namespace UniversitySystem.WinApp
             ShowAllTeacher showAllTeacher = new ShowAllTeacher();
             showAllTeacher.Show();
         }
+
+        private void btnRoom_Click(object sender, EventArgs e)
+        {
+            AddRoom addRoom = new AddRoom();
+            this.Close();
+            addRoom.Show();
+        }
     }
 }

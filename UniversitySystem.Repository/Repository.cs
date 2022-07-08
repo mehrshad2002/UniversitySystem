@@ -28,6 +28,34 @@ namespace UniversitySystem.Repository
             return true;
         }
 
+        public List<CollegeAndUnivercity> ReadAllCollegeJoin()
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "select Univercity.Name as UniName , College.Name , College.ID " +
+                " from college " +
+                "join Univercity on College.UnivercityID = Univercity.ID";
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);//for read table from db 
+            DataSet tables = new DataSet(); //can read data from row and column 
+            adapter.Fill(tables);
+            var AllRows = tables.Tables[0].Rows;
+
+            List<CollegeAndUnivercity> cuList = new List<CollegeAndUnivercity>();
+            foreach(DataRow Row in AllRows)
+            {
+                CollegeAndUnivercity CU = new CollegeAndUnivercity();
+                CU.UnivercityName = Convert.ToString(Row["UniName"]);
+                CU.CollegeName = Convert.ToString(Row["Name"]);
+                CU.CollegeID = Convert.ToInt32(Row["ID"]);
+                cuList.Add(CU);
+            }
+
+            return cuList;
+        }
+
         public List<Teacher> AllTeacher()
         {
             string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
@@ -53,6 +81,32 @@ namespace UniversitySystem.Repository
             }
 
             return AllTeacher;
+        }
+
+        public bool AddRoom(int ID, int collegeID)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "insert into Room " +
+                $"Values({ID} , {collegeID})";
+            SqlCommand cmd = new SqlCommand(querystring, con);
+
+            try
+            {
+                int Result = cmd.ExecuteNonQuery();
+                if( Result == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }catch(Exception e)
+            {
+                return false;
+            }
         }
 
         public bool EditTeacher(Teacher editTeacher , int oldID )

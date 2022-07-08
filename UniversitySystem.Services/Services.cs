@@ -24,14 +24,20 @@ namespace UniversitySystem.Services
             return repository.ShowAllData();
         }
 
+        public List<College> ReadAllCollege()
+        {
+            return repository.ReadAllCollege();
+        }
+
         public List<Teacher> AllTeacher()
         {
             return repository.AllTeacher();
         }
 
-        public List<College> ReadAllCollege()
+
+        public List<CollegeAndUnivercity> ReadAllCollegeJoin()
         {
-            return repository.ReadAllCollege();
+            return repository.ReadAllCollegeJoin();
         }
 
         public string SayUnivercityName(int ID)
@@ -42,6 +48,16 @@ namespace UniversitySystem.Services
         public bool DeleteUser(int ID, string Name)
         {
             return repository.DeleteUser(ID , Name );
+        }
+
+        public bool AddRoom(int ID , int CollegeID )
+        {
+            return repository.AddRoom(ID, CollegeID);
+        }
+
+        public int SearchCollegeID(int userCollegeID)
+        {
+            return 0;
         }
 
         public List<Univercity> ReadAllUnivercity()
