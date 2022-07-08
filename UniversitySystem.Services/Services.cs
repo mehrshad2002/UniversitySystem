@@ -24,6 +24,11 @@ namespace UniversitySystem.Services
             return repository.ShowAllData();
         }
 
+        public List<Teacher> AllTeacher()
+        {
+            return repository.AllTeacher();
+        }
+
         public List<College> ReadAllCollege()
         {
             return repository.ReadAllCollege();
@@ -54,6 +59,11 @@ namespace UniversitySystem.Services
             return repository.FinUnivercityID(findUnivercityID);
         }
 
+        public bool SearchTeacher(Teacher teacher, int ID)
+        {
+            return repository.SearchTeacher(teacher, ID);
+        }
+
         public bool AddCollege(College college)
         {
             return repository.AddCollege(college);
@@ -62,6 +72,11 @@ namespace UniversitySystem.Services
         public bool DeleteCollege(int CollegeID)
         {
             return repository.DeleteCollege(CollegeID);
+        }
+
+        public bool EditTeacher(Teacher editTeacher ,  int oldID)
+        {
+            return repository.EditTeacher(editTeacher , oldID);
         }
 
         public bool AddUnivercity(Univercity univercity)

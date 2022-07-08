@@ -95,5 +95,11 @@ namespace UniversitySystem.WinApp
             this.Close();
             removeCollege.Show();
         }
+
+        private void btnShowAllTeacher_Click(object sender, EventArgs e)
+        {
+            ShowAllTeacher showAllTeacher = new ShowAllTeacher();
+            showAllTeacher.Show();
+        }
     }
 }

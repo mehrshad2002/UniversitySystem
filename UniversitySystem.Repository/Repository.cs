@@ -28,6 +28,85 @@ namespace UniversitySystem.Repository
             return true;
         }
 
+        public List<Teacher> AllTeacher()
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "select * from Teacher ";
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);//for read table from db 
+            DataSet tables = new DataSet(); //can read data from row and column 
+            adapter.Fill(tables);
+            var AllRows = tables.Tables[0].Rows;
+            List<Teacher> AllTeacher = new List<Teacher>();
+
+            foreach(DataRow Row in AllRows)
+            {
+                Teacher teacher = new Teacher();
+                teacher.Name = Convert.ToString(Row["Name"]);
+                teacher.CollegeID = Convert.ToInt32(Row["College_ID"]);
+                teacher.ID = Convert.ToInt32(Row["ID"]);
+                teacher.Password = Convert.ToString(Row["Password"]);
+
+                AllTeacher.Add(teacher);
+            }
+
+            return AllTeacher;
+        }
+
+        public bool EditTeacher(Teacher editTeacher , int oldID )
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "update Teacher " +
+                $"set ID = {editTeacher.ID} , Name = '{editTeacher.Name}' , College_ID = {editTeacher.CollegeID} , Password = '{editTeacher.Password}'  " +
+                $"where ID = {oldID}";
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            try
+            {
+                int Result = cmd.ExecuteNonQuery();
+                if( Result == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool SearchTeacher(Teacher teacher, int ID)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "select * from Teacher " +
+                $"where ID = {ID}";
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);//for read table from db 
+            DataSet tables = new DataSet(); //can read data from row and column 
+            adapter.Fill(tables);
+            var AllRows = tables.Tables[0].Rows;
+
+            foreach(DataRow Row in AllRows)
+            {
+                teacher.ID = Convert.ToInt32(Row["ID"]);
+                teacher.Name = Convert.ToString(Row["Name"]);
+                teacher.CollegeID = Convert.ToInt32(Row["College_ID"]);
+                teacher.Password = Convert.ToString(Row["Password"]);
+                return true;
+            }
+            return false;
+        }
+
         public string SayUnivercityName(int ID)
         {
             string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
