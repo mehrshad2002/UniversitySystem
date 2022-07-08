@@ -108,5 +108,26 @@ namespace UniversitySystem.WinApp
             this.Close();
             addRoom.Show();
         }
+
+        private void btnRemoveRoom_Click(object sender, EventArgs e)
+        {
+            RemoveRoom removeRoom = new RemoveRoom();
+            this.Close();
+            removeRoom.Show();
+        }
+
+        private void btnAddLesson_Click(object sender, EventArgs e)
+        {
+            AddLesson addLesson = new AddLesson();
+            this.Close();
+            addLesson.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            RemoveLesson removeLesson = new RemoveLesson();
+            this.Close();
+            removeLesson.Show();
+        }
     }
 }

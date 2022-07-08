@@ -28,6 +28,112 @@ namespace UniversitySystem.Repository
             return true;
         }
 
+        public List<Lesson> Alllessons()
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "select * from Lessons ";
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);//for read table from db 
+            DataSet tables = new DataSet(); //can read data from row and column 
+            adapter.Fill(tables);
+            var AllRows = tables.Tables[0].Rows;
+
+            List<Lesson> Lessons = new List<Lesson>();
+            foreach(DataRow row in AllRows)
+            {
+                Lesson lesson = new Lesson();
+                lesson.Name = Convert.ToString(row["Name"]);
+                lesson.ID = Convert.ToInt32(row["ID"]);
+                lesson.CollegeID = Convert.ToInt32(row["CollegeID"]);
+
+                Lessons.Add(lesson);
+            }
+            return Lessons;
+        }
+
+        public bool RemoveLesson(int ID)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "delete from Lessons " +
+                $"where ID = {ID}";
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+
+            try
+            {
+                int Result = cmd.ExecuteNonQuery();
+                if( Result != 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }catch(Exception e)
+            {
+                return false;
+            }
+        }
+
+        public List<Room> AllRooms()
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "select * from Room";
+
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);//for read table from db 
+            DataSet tables = new DataSet(); //can read data from row and column 
+            adapter.Fill(tables);
+            var AllRows = tables.Tables[0].Rows;
+
+            List<Room> rooms = new List<Room>();
+            foreach(DataRow Row in AllRows)
+            {
+                Room room = new Room();
+                room.ID = Convert.ToInt32(Row["ID"]);
+                room.CollageID = Convert.ToInt32(Row["College_ID"]);
+
+                rooms.Add(room);
+            }
+
+            return rooms;
+        }
+
+        public bool AddLesson(Lesson lesson)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "insert into Lessons " +
+                $" Values({lesson.ID} , '{lesson.Name}' , {lesson.CollegeID} )";
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            try
+            {
+                int Result = cmd.ExecuteNonQuery();
+                if( Result != 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }catch( Exception e)
+            {
+                return false;
+            }
+        }
+
         public List<CollegeAndUnivercity> ReadAllCollegeJoin()
         {
             string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
@@ -54,6 +160,33 @@ namespace UniversitySystem.Repository
             }
 
             return cuList;
+        }
+
+        public bool RemoveRoom(object ID)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "delete from Room " +
+                $"where ID = {ID} ";
+            SqlCommand cmd = new SqlCommand(querystring, con);
+
+            try
+            {
+                int Result = cmd.ExecuteNonQuery();
+
+                if( Result != 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false; 
+                }
+            }catch( Exception e)
+            {
+                return false;
+            }
         }
 
         public List<Teacher> AllTeacher()
