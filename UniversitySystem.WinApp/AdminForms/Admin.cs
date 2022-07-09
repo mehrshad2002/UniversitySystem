@@ -129,5 +129,19 @@ namespace UniversitySystem.WinApp
             this.Close();
             removeLesson.Show();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            CreateSelection createSelection = new CreateSelection();
+            this.Close();
+            createSelection.Show();
+        }
+
+        private void RemoveSelection_Click(object sender, EventArgs e)
+        {
+            RemoveSelection removeSelection = new RemoveSelection();
+            this.Close();
+            removeSelection.Show();
+        }
     }
 }

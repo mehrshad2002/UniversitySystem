@@ -28,6 +28,62 @@ namespace UniversitySystem.Repository
             return true;
         }
 
+        public List<Selection> AllSelection()
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "select * from Selction ";
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);//for read table from db 
+            DataSet tables = new DataSet(); //can read data from row and column 
+            adapter.Fill(tables);
+            var AllRows = tables.Tables[0].Rows;
+
+            List<Selection> Selections = new List<Selection>();
+            foreach (DataRow row in AllRows)
+            {
+                Selection selection = new Selection();
+                selection.ID = Convert.ToInt32(row["ID"]);
+                selection.Capacity = Convert.ToInt32(row["Capacity"]);
+                selection.TeacherID = Convert.ToInt32(row["Teacher_ID"]);
+                selection.CollegeID = Convert.ToInt32(row["College_ID"]);
+                selection.StudentID = 0;
+                selection.dateTime = Convert.ToDateTime(row["CalssTime"]);
+                selection.RoomID = Convert.ToInt32(row["Room_ID"]);
+                selection.LessonID = Convert.ToInt32(row["Lesson_ID"]);
+                Selections.Add(selection);
+            }
+            return Selections;
+        }
+
+        public bool RemoveSelection(int ID)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "delete from Selction " +
+                $"where ID = {ID} ";
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            try
+            {
+                int Result = cmd.ExecuteNonQuery();
+                if( Result != 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }catch(Exception e)
+            {
+                return false;
+            }
+        }
+
         public List<Lesson> Alllessons()
         {
             string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
@@ -61,6 +117,33 @@ namespace UniversitySystem.Repository
             con.Open();
             string querystring = "delete from Lessons " +
                 $"where ID = {ID}";
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+
+            try
+            {
+                int Result = cmd.ExecuteNonQuery();
+                if( Result != 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }catch(Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool CreateSelection(int ID,int Capacity, int collegeID, int lessonID, int roomID, int teacherID, DateTime dateTime)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "insert into Selction " +
+                $"Values({ID} , '{dateTime}' , {Capacity} , null , {collegeID} , {roomID} ,{teacherID} ,{lessonID}) ";
 
             SqlCommand cmd = new SqlCommand(querystring, con);
 

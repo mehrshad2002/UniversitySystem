@@ -29,6 +29,11 @@ namespace UniversitySystem.Services
             return repository.Alllessons();
         }
 
+        public List<Selection> AllSelection()
+        {
+            return repository.AllSelection();
+        }
+
         public List<Room> AllRoom()
         {
             return repository.AllRooms();
@@ -37,6 +42,11 @@ namespace UniversitySystem.Services
         public List<College> ReadAllCollege()
         {
             return repository.ReadAllCollege();
+        }
+
+        public bool RemoveSelection(int ID)
+        {
+            return repository.RemoveSelection(ID);
         }
 
         public bool RemoveLesson(int ID)
@@ -72,6 +82,11 @@ namespace UniversitySystem.Services
         public bool DeleteUser(int ID, string Name)
         {
             return repository.DeleteUser(ID , Name );
+        }
+
+        public bool CreateSelection(int ID,int Capacity , int collegeID, int lessonID, int roomID, int teacherID, DateTime dateTime)
+        {
+            return repository.CreateSelection(ID,Capacity, collegeID, lessonID, roomID, teacherID, dateTime);
         }
 
         public bool AddRoom(int ID , int CollegeID )

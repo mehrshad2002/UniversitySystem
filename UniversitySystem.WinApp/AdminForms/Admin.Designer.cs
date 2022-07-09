@@ -44,6 +44,8 @@
             this.btnRemoveRoom = new System.Windows.Forms.Button();
             this.btnAddLesson = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.RemoveSelection = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAddStudent
@@ -207,11 +209,33 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(786, 267);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(229, 50);
+            this.button5.TabIndex = 16;
+            this.button5.Text = "Create Selection ";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // RemoveSelection
+            // 
+            this.RemoveSelection.Location = new System.Drawing.Point(786, 201);
+            this.RemoveSelection.Name = "RemoveSelection";
+            this.RemoveSelection.Size = new System.Drawing.Size(229, 50);
+            this.RemoveSelection.TabIndex = 17;
+            this.RemoveSelection.Text = "Remove Selection";
+            this.RemoveSelection.UseVisualStyleBackColor = true;
+            this.RemoveSelection.Click += new System.EventHandler(this.RemoveSelection_Click);
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(993, 450);
+            this.ClientSize = new System.Drawing.Size(1092, 450);
+            this.Controls.Add(this.RemoveSelection);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.btnAddLesson);
             this.Controls.Add(this.btnRemoveRoom);
@@ -252,5 +276,7 @@
         private Button btnRemoveRoom;
         private Button btnAddLesson;
         private Button button4;
+        private Button button5;
+        private Button RemoveSelection;
     }
 }
