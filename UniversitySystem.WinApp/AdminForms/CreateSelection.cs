@@ -38,10 +38,12 @@ namespace UniversitySystem.WinApp.AdminForms
         {
             ServiceClass service = new ServiceClass();
 
+
             int Capacity = Convert.ToInt32(numberCapacity.Value);
             int ID = Convert.ToInt32(txtID.Text);
             int CollegeID = Convert.ToInt32(txtCollegeID.Text);
             int LessonID = Convert.ToInt32(txtLessonID.Text);
+            string Name = service.SayLessonName(LessonID);
             int RoomID = Convert.ToInt32(txtRoom.Text);
             int TeacherID = Convert.ToInt32(txtTeacherID.Text);
             DateTime dateTime = dtValue.Value.Date + dtValue.Value.TimeOfDay;

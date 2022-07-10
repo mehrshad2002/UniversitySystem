@@ -1,6 +1,6 @@
-﻿namespace UniversitySystem.WinApp.PersonnelForms
+﻿namespace UniversitySystem.WinApp
 {
-    partial class Selectionlesson
+    partial class RemoveUnivercity
     {
         /// <summary>
         /// Required designer variable.
@@ -28,75 +28,73 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btnRemove = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.dgSelections = new System.Windows.Forms.DataGridView();
+            this.dgUni = new System.Windows.Forms.DataGridView();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgSelections)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgUni)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(197, 363);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(112, 34);
+            this.btnRemove.TabIndex = 0;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.BackColor = System.Drawing.Color.LightCoral;
-            this.btnCancel.Location = new System.Drawing.Point(952, 714);
+            this.btnCancel.Location = new System.Drawing.Point(528, 363);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(112, 34);
-            this.btnCancel.TabIndex = 0;
+            this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnSave
+            // dgUni
             // 
-            this.btnSave.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnSave.Location = new System.Drawing.Point(952, 665);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(112, 34);
-            this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // dgSelections
-            // 
-            this.dgSelections.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgSelections.Location = new System.Drawing.Point(37, 44);
-            this.dgSelections.Name = "dgSelections";
-            this.dgSelections.RowHeadersWidth = 62;
-            this.dgSelections.RowTemplate.Height = 33;
-            this.dgSelections.Size = new System.Drawing.Size(1027, 587);
-            this.dgSelections.TabIndex = 2;
+            this.dgUni.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgUni.Location = new System.Drawing.Point(197, 12);
+            this.dgUni.Name = "dgUni";
+            this.dgUni.RowHeadersWidth = 62;
+            this.dgUni.RowTemplate.Height = 33;
+            this.dgUni.Size = new System.Drawing.Size(443, 225);
+            this.dgUni.TabIndex = 2;
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(218, 668);
+            this.txtID.Location = new System.Drawing.Point(197, 287);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(700, 31);
+            this.txtID.Size = new System.Drawing.Size(443, 31);
             this.txtID.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(133, 674);
+            this.label1.Location = new System.Drawing.Point(114, 293);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 25);
             this.label1.TabIndex = 4;
             this.label1.Text = "ID";
             // 
-            // Selectionlesson
+            // RemoveUnivercity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1151, 791);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtID);
-            this.Controls.Add(this.dgSelections);
-            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.dgUni);
             this.Controls.Add(this.btnCancel);
-            this.Name = "Selectionlesson";
-            this.Text = "Selectionlesson";
-            ((System.ComponentModel.ISupportInitialize)(this.dgSelections)).EndInit();
+            this.Controls.Add(this.btnRemove);
+            this.Name = "RemoveUnivercity";
+            this.Text = "RemoveUnivercity";
+            ((System.ComponentModel.ISupportInitialize)(this.dgUni)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -104,9 +102,9 @@
 
         #endregion
 
+        private Button btnRemove;
         private Button btnCancel;
-        private Button btnSave;
-        private DataGridView dgSelections;
+        private DataGridView dgUni;
         private TextBox txtID;
         private Label label1;
     }

@@ -58,6 +58,76 @@ namespace UniversitySystem.Repository
             return Selections;
         }
 
+        public bool MainSelection(int ID, int selectionID, int studentID)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querySelection = "insert into SelectionList " +
+                $"Values({ID},{selectionID},{studentID})";
+
+
+            string queryValidation = "select * from SelectionList ";
+            SqlCommand cmdValidation = new SqlCommand(queryValidation, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmdValidation);
+            DataSet tables = new DataSet();
+            adapter.Fill(tables);
+            var AllRows = tables.Tables[0].Rows;
+
+            foreach( DataRow Row in AllRows)
+            {
+                int ReaderStudentID = Convert.ToInt32(Row["Student_ID"]);
+                int ReaderSelectionID = Convert.ToInt32(Row["Selection_ID"]);
+                if( ReaderSelectionID == selectionID && ReaderStudentID == studentID)
+                {
+                    return false;
+                }
+            }
+
+            SqlCommand cmdSelection = new SqlCommand(querySelection, con);
+            try
+            {
+                int Result = cmdSelection.ExecuteNonQuery();
+                if (Result != 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool RemoveUnivercity(int ID)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "delete from Univercity " +
+                $"where ID = {ID} ";
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            try
+            {
+                int Result = cmd.ExecuteNonQuery();
+                if(Result != 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }catch(Exception e)
+            {
+                return false;
+            }
+        }
+
         public bool RemoveSelection(int ID)
         {
             string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";

@@ -44,14 +44,29 @@ namespace UniversitySystem.Services
             return repository.ReadAllCollege();
         }
 
+        public bool MainSelection(int ID, int selectionID, int studentID)
+        {
+            return repository.MainSelection(ID, selectionID, studentID);
+        }
+
         public bool RemoveSelection(int ID)
         {
             return repository.RemoveSelection(ID);
         }
 
+        public bool RemoveUnivercity(int ID)
+        {
+            return repository.RemoveUnivercity(ID);
+        }
+
         public bool RemoveLesson(int ID)
         {
             return repository.RemoveLesson(ID);
+        }
+
+        public string SayLessonName(int lessonID)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Teacher> AllTeacher()

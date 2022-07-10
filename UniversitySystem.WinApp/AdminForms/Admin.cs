@@ -25,16 +25,16 @@ namespace UniversitySystem.WinApp
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             FormLogin formLogin = new FormLogin();
-            formLogin.Show();
             this.Close();
+            formLogin.Show();
         }
 
         private void btnAddStudent_Click(object sender, EventArgs e)
         {
 
             AddStudent addStu = new AddStudent();
+            this.Close();
             addStu.Show();
-            this.Hide();
         }
 
         private void btnShowStudents_Click(object sender, EventArgs e)
@@ -142,6 +142,13 @@ namespace UniversitySystem.WinApp
             RemoveSelection removeSelection = new RemoveSelection();
             this.Close();
             removeSelection.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            RemoveUnivercity removeUnivercity = new RemoveUnivercity();
+            this.Close();
+            removeUnivercity.Show();
         }
     }
 }

@@ -91,10 +91,10 @@
             // btnLogOut
             // 
             this.btnLogOut.BackColor = System.Drawing.Color.Tomato;
-            this.btnLogOut.Location = new System.Drawing.Point(206, 346);
+            this.btnLogOut.Location = new System.Drawing.Point(786, 12);
             this.btnLogOut.Margin = new System.Windows.Forms.Padding(1);
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(349, 50);
+            this.btnLogOut.Size = new System.Drawing.Size(229, 179);
             this.btnLogOut.TabIndex = 4;
             this.btnLogOut.Text = "Logout";
             this.btnLogOut.UseVisualStyleBackColor = false;
@@ -118,6 +118,7 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "Remove Univercity";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -233,7 +234,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1092, 450);
+            this.ClientSize = new System.Drawing.Size(1092, 367);
             this.Controls.Add(this.RemoveSelection);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
