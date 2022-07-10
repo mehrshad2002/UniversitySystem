@@ -64,11 +64,59 @@ namespace UniversitySystem.Repository
             string querystring = "delete from SelectionList " +
                 $"where ID = {ID}";
 
+
+
             SqlCommand cmd = new SqlCommand(querystring, con);
 
             try
             {
+                    string queryFindSelectionID = "select * from SelectionList " +
+                        $"where ID = {ID} ";
+                    SqlCommand cmdCapacity = new SqlCommand(queryFindSelectionID, con);
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmdCapacity);
+                    DataSet tables = new DataSet();
+                    adapter.Fill(tables);
+                    var AllRows = tables.Tables[0].Rows;
+                    //1
+                    foreach( DataRow Row in AllRows)
+                    {
+                        int SelectionID = Convert.ToInt32(Row["Selection_ID"]);
+                        int i = 0;//***
+
+                        string queryCapacityUp = "select * from  Selction " +
+                            $"where ID = {SelectionID}";
+                        SqlCommand cmdCapacityUp = new SqlCommand(queryCapacityUp, con);
+                        SqlDataAdapter adapter2 = new SqlDataAdapter(cmdCapacityUp);
+                        DataSet tables2 = new DataSet();
+                        adapter2.Fill(tables2);
+                        var AllRows2 = tables2.Tables[0].Rows;
+                        //2
+                        foreach( DataRow Row2 in AllRows2)
+                        {
+                            int Capacity = Convert.ToInt32(Row2["Capacity"]);
+                            ++Capacity;
+                            string queryUpdateCapacity = "update Selction " +
+                                $"set Capacity = {Capacity} " +
+                                $"where ID = {SelectionID} "; 
+
+                            SqlCommand queryUpdatecmd = new SqlCommand(queryUpdateCapacity, con);
+
+                            try
+                            {
+                                int Result2 = queryUpdatecmd.ExecuteNonQuery();
+                                if( Result2 == 0 )
+                                {
+                                    return false;
+                                }
+                            }catch(Exception e)
+                            {
+                                return false;
+                            }
+                        }
+                    }
+
                 int Result = cmd.ExecuteNonQuery();
+                con.Close();
                 if (Result != 0)
                 {
                     return true;
@@ -154,9 +202,47 @@ namespace UniversitySystem.Repository
             adapter.Fill(tables);
             var AllRows = tables.Tables[0].Rows;
 
-            foreach( DataRow Row in AllRows)
-            {
+            string queryCapacity = "select * from Selction " +
+                $"where ID = {selectionID}";
+            SqlCommand Capacitycdm = new SqlCommand(queryCapacity, con);
+            SqlDataAdapter adapter2 = new SqlDataAdapter(Capacitycdm);
+            DataSet tables2 = new DataSet();
+            adapter2.Fill(tables2);
+            var AllRows2 = tables2.Tables[0].Rows;
 
+
+            foreach ( DataRow row in AllRows2)
+            {
+                int Capacity = Convert.ToInt32(row["Capacity"]);
+                if (Capacity > 0)
+                {
+                    --Capacity;
+                    string queryCountDown = "update Selction " +
+                        $"set Capacity = {Capacity} " +
+                        $"where ID = {selectionID} ";
+
+                    SqlCommand cmdCapacityless = new SqlCommand(queryCountDown, con);
+                    try
+                    {
+                        int Result = cmdCapacityless.ExecuteNonQuery();
+                        if(Result == 0)
+                        {
+                            return false;
+                        }
+                    }catch(Exception e)
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            // we check In SelectionList for Student
+            foreach ( DataRow Row in AllRows)
+            {
                 int ReaderStudentID = Convert.ToInt32(Row["Student_ID"]);
                 int ReaderSelectionID = Convert.ToInt32(Row["Selection_ID"]);
                 if( ReaderSelectionID == selectionID && ReaderStudentID == studentID)
