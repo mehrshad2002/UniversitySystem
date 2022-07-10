@@ -203,6 +203,18 @@ namespace UniversitySystem.Repository
             adapter.Fill(tables);
             var AllRows = tables.Tables[0].Rows;
 
+            // we check In SelectionList for Student
+            foreach ( DataRow Row in AllRows)
+            {
+                int ReaderStudentID = Convert.ToInt32(Row["Student_ID"]);
+                int ReaderSelectionID = Convert.ToInt32(Row["Selection_ID"]);
+                if( ReaderSelectionID == selectionID && ReaderStudentID == studentID)
+                {
+                    return false;
+                }
+            }
+
+
             string queryCapacity = "select * from Selction " +
                 $"where ID = {selectionID}";
             SqlCommand Capacitycdm = new SqlCommand(queryCapacity, con);
@@ -241,16 +253,6 @@ namespace UniversitySystem.Repository
                 }
             }
 
-            // we check In SelectionList for Student
-            foreach ( DataRow Row in AllRows)
-            {
-                int ReaderStudentID = Convert.ToInt32(Row["Student_ID"]);
-                int ReaderSelectionID = Convert.ToInt32(Row["Selection_ID"]);
-                if( ReaderSelectionID == selectionID && ReaderStudentID == studentID)
-                {
-                    return false;
-                }
-            }
 
             SqlCommand cmdSelection = new SqlCommand(querySelection, con);
             try
