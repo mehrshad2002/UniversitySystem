@@ -28,6 +28,62 @@ namespace UniversitySystem.Repository
             return true;
         }
 
+        public List<SelectionForStudentList> SelectionList()
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "select  Selction.ID as SelectionID , SelectionList.ID as ID , Selction.CalssTime as Time ,Selction.Name as Name" +
+                 " from SelectionList join Selction on SelectionList.Selection_ID = Selction.ID";
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);//for read table from db 
+            DataSet tables = new DataSet(); //can read data from row and column 
+            adapter.Fill(tables);
+            var AllRows = tables.Tables[0].Rows;
+            List<SelectionForStudentList> selectionList = new List<SelectionForStudentList>();
+
+            foreach( DataRow row in AllRows )
+            {
+                SelectionForStudentList forStudentList = new SelectionForStudentList();
+                forStudentList.SelectionID = Convert.ToInt32(row["SelectionID"]);
+                forStudentList.ID = Convert.ToInt32(row["ID"]);
+                forStudentList.Name = Convert.ToString(row["Name"]);
+
+                selectionList.Add(forStudentList);
+            }
+
+            return selectionList;
+        }
+
+        public bool RemoveSelectionStudent(int ID)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "delete from SelectionList " +
+                $"where ID = {ID}";
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+
+            try
+            {
+                int Result = cmd.ExecuteNonQuery();
+                if (Result != 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
         public List<Selection> AllSelection()
         {
             string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
@@ -53,9 +109,33 @@ namespace UniversitySystem.Repository
                 selection.dateTime = Convert.ToDateTime(row["CalssTime"]);
                 selection.RoomID = Convert.ToInt32(row["Room_ID"]);
                 selection.LessonID = Convert.ToInt32(row["Lesson_ID"]);
+                selection.Name = Convert.ToString(row["Name"]);
                 Selections.Add(selection);
             }
             return Selections;
+        }
+
+        public string SayLessonName(int lessonID)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "select * from Lessons " +
+                $"where ID  = {lessonID}";
+
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataSet tables = new DataSet();
+            adapter.Fill(tables);
+            var AllRows = tables.Tables[0].Rows;
+
+            foreach( DataRow row in AllRows)
+            {
+                string Name = Convert.ToString(row["Name"]);
+                return Name;
+            }
+            return "NULL";
         }
 
         public bool MainSelection(int ID, int selectionID, int studentID)
@@ -76,6 +156,7 @@ namespace UniversitySystem.Repository
 
             foreach( DataRow Row in AllRows)
             {
+
                 int ReaderStudentID = Convert.ToInt32(Row["Student_ID"]);
                 int ReaderSelectionID = Convert.ToInt32(Row["Selection_ID"]);
                 if( ReaderSelectionID == selectionID && ReaderStudentID == studentID)
@@ -207,13 +288,13 @@ namespace UniversitySystem.Repository
             }
         }
 
-        public bool CreateSelection(int ID,int Capacity, int collegeID, int lessonID, int roomID, int teacherID, DateTime dateTime)
+        public bool CreateSelection(int ID,int Capacity, int collegeID, int lessonID, int roomID, int teacherID, DateTime dateTime , string Name)
         {
             string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
             SqlConnection con = new SqlConnection(ConString);
             con.Open();
             string querystring = "insert into Selction " +
-                $"Values({ID} , '{dateTime}' , {Capacity} , null , {collegeID} , {roomID} ,{teacherID} ,{lessonID}) ";
+                $"Values({ID} , '{dateTime}' , {Capacity} , null , {collegeID} , {roomID} ,{teacherID} ,{lessonID} , '{Name}') ";
 
             SqlCommand cmd = new SqlCommand(querystring, con);
 

@@ -48,7 +48,7 @@ namespace UniversitySystem.WinApp.AdminForms
             int TeacherID = Convert.ToInt32(txtTeacherID.Text);
             DateTime dateTime = dtValue.Value.Date + dtValue.Value.TimeOfDay;
 
-            bool Result = service.CreateSelection(ID,Capacity , CollegeID , LessonID , RoomID , TeacherID ,dateTime );
+            bool Result = service.CreateSelection(ID,Capacity , CollegeID , LessonID , RoomID , TeacherID ,dateTime , Name);
             if (Result)
             {
                 MessageBox.Show("Done!");

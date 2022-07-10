@@ -29,6 +29,11 @@ namespace UniversitySystem.Services
             return repository.Alllessons();
         }
 
+        public List<SelectionForStudentList> SelectionList()
+        {
+            return repository.SelectionList();
+        }
+
         public List<Selection> AllSelection()
         {
             return repository.AllSelection();
@@ -42,6 +47,11 @@ namespace UniversitySystem.Services
         public List<College> ReadAllCollege()
         {
             return repository.ReadAllCollege();
+        }
+
+        public bool RemoveSelectionStudent(int iD)
+        {
+            return repository.RemoveSelectionStudent(iD);
         }
 
         public bool MainSelection(int ID, int selectionID, int studentID)
@@ -66,7 +76,7 @@ namespace UniversitySystem.Services
 
         public string SayLessonName(int lessonID)
         {
-            throw new NotImplementedException();
+            return repository.SayLessonName(lessonID);
         }
 
         public List<Teacher> AllTeacher()
@@ -99,9 +109,9 @@ namespace UniversitySystem.Services
             return repository.DeleteUser(ID , Name );
         }
 
-        public bool CreateSelection(int ID,int Capacity , int collegeID, int lessonID, int roomID, int teacherID, DateTime dateTime)
+        public bool CreateSelection(int ID,int Capacity , int collegeID, int lessonID, int roomID, int teacherID, DateTime dateTime , string Name)
         {
-            return repository.CreateSelection(ID,Capacity, collegeID, lessonID, roomID, teacherID, dateTime);
+            return repository.CreateSelection(ID,Capacity, collegeID, lessonID, roomID, teacherID, dateTime ,Name);
         }
 
         public bool AddRoom(int ID , int CollegeID )

@@ -36,7 +36,8 @@ namespace UniversitySystem.WinApp
                     if(user.Poss == 400)
                     {
                         StudentMain studentMain = new StudentMain();
-                        studentMain.user = user;
+                        //studentMain.user = user
+                        StudentMain.user = user;
                         studentMain.Show();
                         this.Hide();
 

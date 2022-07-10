@@ -16,6 +16,7 @@ namespace UniversitySystem.Classes
         private int roomID;
         private int studentID;
         private DateTime datetime;
+        private string name;
 
         public int ID { get { return id; } set { id = value; } }
         public int Capacity { get { return capacity; } set { capacity = value; } }
@@ -25,6 +26,7 @@ namespace UniversitySystem.Classes
         public int RoomID { get { return roomID; } set { roomID = value; } }
         public int StudentID { get { return studentID; } set { studentID = value; } }
         public DateTime dateTime { get { return datetime; } set { datetime = value; } } 
+        public string Name { get { return name; } set { name = value; } }
 
         public Selection() { }
     }

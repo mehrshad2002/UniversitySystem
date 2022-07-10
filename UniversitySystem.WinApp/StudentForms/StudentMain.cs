@@ -15,7 +15,7 @@ namespace UniversitySystem.WinApp.PersonnelForms
 {
     public partial class StudentMain : Form
     {
-        public User user; 
+        public static User user; 
         public StudentMain()
         {
             InitializeComponent();
@@ -33,17 +33,15 @@ namespace UniversitySystem.WinApp.PersonnelForms
             ServiceClass serviceClass = new ServiceClass();
             Selectionlesson selectionlesson = new Selectionlesson();
             selectionlesson.user = user;
-            this.Close();
+            this.Hide();
             selectionlesson.Show();
-            //lesson selection
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //RemoveSelection removeSelection = new RemoveSelection();
-            //removeSelection.user = user;
-            //this.Close();
-            //removeSelection.Show();
+            RemoveSelection removeSelection = new RemoveSelection( user );
+            this.Close();
+            removeSelection.Show();
         }
     }
 }
