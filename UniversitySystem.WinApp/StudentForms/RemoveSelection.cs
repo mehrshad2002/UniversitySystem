@@ -21,9 +21,10 @@ namespace UniversitySystem.WinApp.StudentForms
         {
             InitializeComponent();
             this.user = user;
+            int StudentID = user.CardID;
             ServiceClass service = new ServiceClass();
             List<SelectionForStudentList> SelectionList = new List<SelectionForStudentList>();
-            SelectionList = service.SelectionList();
+            SelectionList = service.SelectionList(StudentID);
             dgAllSelection.DataSource = SelectionList ;
             
         }
@@ -31,6 +32,10 @@ namespace UniversitySystem.WinApp.StudentForms
         private void button1_Click(object sender, EventArgs e)
         {
             ServiceClass service = new ServiceClass();
+            if(txtID.Text == "")
+            {
+                txtID.Text = "0";
+            }
             int ID = Convert.ToInt32(txtID.Text);
             bool Result = service.RemoveSelectionStudent(ID);
 

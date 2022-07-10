@@ -29,9 +29,9 @@ namespace UniversitySystem.Services
             return repository.Alllessons();
         }
 
-        public List<SelectionForStudentList> SelectionList()
+        public List<SelectionForStudentList> SelectionList( int StudentID)
         {
-            return repository.SelectionList();
+            return repository.SelectionList(StudentID);
         }
 
         public List<Selection> AllSelection()

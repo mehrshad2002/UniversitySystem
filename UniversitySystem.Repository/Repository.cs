@@ -28,13 +28,14 @@ namespace UniversitySystem.Repository
             return true;
         }
 
-        public List<SelectionForStudentList> SelectionList()
+        public List<SelectionForStudentList> SelectionList( int StudentID )
         {
             string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
             SqlConnection con = new SqlConnection(ConString);
             con.Open();
-            string querystring = "select  Selction.ID as SelectionID , SelectionList.ID as ID , Selction.CalssTime as Time ,Selction.Name as Name" +
-                 " from SelectionList join Selction on SelectionList.Selection_ID = Selction.ID";
+            string querystring = "select  Selction.ID as SelectionID , SelectionList.ID as ID , Selction.CalssTime as Time ,Selction.Name as Name , SelectionList.Student_ID as StudentID" +
+                 " from SelectionList join Selction on SelectionList.Selection_ID = Selction.ID" +
+                 $" where SelectionList.Student_ID = {StudentID}";
 
             SqlCommand cmd = new SqlCommand(querystring, con);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);//for read table from db 
