@@ -59,6 +59,7 @@ namespace UniversitySystem.Repository
 
         public bool RemoveSelectionStudent(int ID)
         {
+            //1 We want delete One SelectionLesson
             string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
             SqlConnection con = new SqlConnection(ConString);
             con.Open();
@@ -70,7 +71,7 @@ namespace UniversitySystem.Repository
             SqlCommand cmd = new SqlCommand(querystring, con);
 
             try
-            {
+            {       //2 we wnat find Selection ID for Change Capacity
                     string queryFindSelectionID = "select * from SelectionList " +
                         $"where ID = {ID} ";
                     SqlCommand cmdCapacity = new SqlCommand(queryFindSelectionID, con);
@@ -78,12 +79,13 @@ namespace UniversitySystem.Repository
                     DataSet tables = new DataSet();
                     adapter.Fill(tables);
                     var AllRows = tables.Tables[0].Rows;
-                    //1
+
                     foreach( DataRow Row in AllRows)
                     {
                         int SelectionID = Convert.ToInt32(Row["Selection_ID"]);
                         int i = 0;//***
 
+                        // 3 Select Capacity 
                         string queryCapacityUp = "select * from  Selction " +
                             $"where ID = {SelectionID}";
                         SqlCommand cmdCapacityUp = new SqlCommand(queryCapacityUp, con);
@@ -91,11 +93,12 @@ namespace UniversitySystem.Repository
                         DataSet tables2 = new DataSet();
                         adapter2.Fill(tables2);
                         var AllRows2 = tables2.Tables[0].Rows;
-                        //2
+
                         foreach( DataRow Row2 in AllRows2)
                         {
                             int Capacity = Convert.ToInt32(Row2["Capacity"]);
                             ++Capacity;
+                            // 4 W ewant Update Capacity And problem is here 
                             string queryUpdateCapacity = "update Selction " +
                                 $"set Capacity = {Capacity} " +
                                 $"where ID = {SelectionID} "; 
@@ -115,7 +118,6 @@ namespace UniversitySystem.Repository
                             }
                         }
                     }
-
                 int Result = cmd.ExecuteNonQuery();
                 con.Close();
                 if (Result != 0)
@@ -192,10 +194,12 @@ namespace UniversitySystem.Repository
             string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
             SqlConnection con = new SqlConnection(ConString);
             con.Open();
+
+            //1 we want add new Lesson for student 
             string querySelection = "insert into SelectionList " +
                 $"Values({ID},{selectionID},{studentID})";
 
-
+            //2 read data from lesson was selected 
             string queryValidation = "select * from SelectionList ";
             SqlCommand cmdValidation = new SqlCommand(queryValidation, con);
             SqlDataAdapter adapter = new SqlDataAdapter(cmdValidation);
@@ -214,7 +218,9 @@ namespace UniversitySystem.Repository
                 }
             }
 
+            
 
+            //3 We want Check Capacity For Selection
             string queryCapacity = "select * from Selction " +
                 $"where ID = {selectionID}";
             SqlCommand Capacitycdm = new SqlCommand(queryCapacity, con);
@@ -226,13 +232,34 @@ namespace UniversitySystem.Repository
 
             foreach ( DataRow row in AllRows2)
             {
+
+                // 4 We Check College And Univercity For Users And Student 
+                string queryCheckCollege = "select * from Users " +
+                $"where ID = {studentID} ";
+                SqlCommand cmdCheckCollege = new SqlCommand(queryCheckCollege, con);
+                SqlDataAdapter adapter4 = new SqlDataAdapter(cmdCheckCollege);
+                DataSet table4 = new DataSet();
+                adapter4.Fill(table4);
+                var AllRows4 = table4.Tables[0].Rows; 
+                foreach(DataRow Row4 in AllRows4)
+                {
+                    int StudentCollegeID = Convert.ToInt32(Row4["College_ID"]);
+                    int SelectionCollegeID = Convert.ToInt32(row["College_ID"]);
+                    if( StudentCollegeID != SelectionCollegeID)
+                    {
+                        return false;
+                    }
+                }
+
                 int Capacity = Convert.ToInt32(row["Capacity"]);
                 if (Capacity > 0)
                 {
                     --Capacity;
+                    //5 We want Update Data And Capacity 
                     string queryCountDown = "update Selction " +
                         $"set Capacity = {Capacity} " +
                         $"where ID = {selectionID} ";
+
 
                     SqlCommand cmdCapacityless = new SqlCommand(queryCountDown, con);
                     try

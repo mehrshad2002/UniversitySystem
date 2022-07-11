@@ -18,6 +18,10 @@ namespace UniversitySystem.WinApp.AdminForms
         public AddStudent()
         {
             InitializeComponent();
+            ServiceClass service = new ServiceClass();
+            List<College> colleges = new List<College>();
+            colleges = service.ReadAllCollege();
+            dgCollege.DataSource = colleges;
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -31,7 +35,7 @@ namespace UniversitySystem.WinApp.AdminForms
             string name = textBoxName.Text;
             int StudentID = Convert.ToInt32(textBoxStudentID.Text);
             string Password = textBoxPassword.Text;
-            int CollegeID = Convert.ToInt32((comboBoxCollegeID.Text).Substring(0,4)); 
+            int CollegeID = Convert.ToInt32(txtCollegeID.Text);
 
             //Add Value To NewUser
             NewUser.Password = Password;
@@ -47,20 +51,17 @@ namespace UniversitySystem.WinApp.AdminForms
             {
                 MessageBox.Show("Done!");
                 textBoxName.ResetText();
-                comboBoxCollegeID.ResetText();
                 textBoxPassword.ResetText();
                 textBoxStudentID.ResetText();
-                comboBoxCollegeID.ResetText();
+                txtCollegeID.ResetText();
             }
             else
             {
                 MessageBox.Show("Faild!\nSame Student_ID Or Invalid Data.\nPlease Check Student ID first");
                 textBoxName.ResetText();
-                comboBoxCollegeID.ResetText();
                 textBoxPassword.ResetText();
                 textBoxStudentID.ResetText();
-                comboBoxCollegeID.ResetText();
-
+                txtCollegeID.ResetText();
             }
 
 
