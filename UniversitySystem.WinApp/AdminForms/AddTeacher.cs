@@ -18,6 +18,21 @@ namespace UniversitySystem.WinApp.AdminForms
         public AddTeacher()
         {
             InitializeComponent();
+            ServiceClass service = new ServiceClass();
+            List<Teacher> TeacherList = new List<Teacher>();
+            TeacherList = service.AllTeacher();
+
+            List<College> CollegeList = new List<College>();
+            CollegeList = service.ReadAllCollege();
+
+            List<CollegeAndUnivercity> CollegeAndUnivercityList = new List<CollegeAndUnivercity>();
+            CollegeAndUnivercityList = service.ReadAllCollegeJoin();
+
+            foreach(CollegeAndUnivercity college in CollegeAndUnivercityList)
+            {
+                comboBoxCollege.Items.Add(college.CollegeName + " " + college.UnivercityName + " " + college.CollegeID );
+                comboBoxCollege.ValueMember = Convert.ToString(college.CollegeID);
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -27,7 +42,7 @@ namespace UniversitySystem.WinApp.AdminForms
             ServiceClass service = new ServiceClass();
             user.Name = txtName.Text;
             user.CardID = Convert.ToInt32(txtID.Text);
-            user.CollegeID = Convert.ToInt32((comboBox1.Text).Substring(0, 4));
+            user.CollegeID = Convert.ToInt32(comboBoxCollege.ValueMember);
             user.Password = txtPassword.Text;
 
 
@@ -36,7 +51,7 @@ namespace UniversitySystem.WinApp.AdminForms
             if( Result)
             {
                 MessageBox.Show("Teacher Was Created.");
-                comboBox1.ResetText();
+                comboBoxCollege.ResetText();
                 txtName.ResetText();
                 txtPassword.ResetText();
                 txtID.ResetText();
@@ -44,7 +59,7 @@ namespace UniversitySystem.WinApp.AdminForms
             else
             {
                 MessageBox.Show("Somthings Wrong!");
-                comboBox1.ResetText();
+                comboBoxCollege.ResetText();
                 txtName.ResetText();
                 txtPassword.ResetText();
                 txtID.ResetText();

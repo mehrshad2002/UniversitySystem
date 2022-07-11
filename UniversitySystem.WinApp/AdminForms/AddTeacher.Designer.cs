@@ -37,13 +37,13 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxCollege = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(166, 85);
+            this.label1.Location = new System.Drawing.Point(290, 201);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 25);
             this.label1.TabIndex = 0;
@@ -52,7 +52,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(183, 147);
+            this.label2.Location = new System.Drawing.Point(307, 263);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 25);
             this.label2.TabIndex = 1;
@@ -61,7 +61,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(153, 213);
+            this.label3.Location = new System.Drawing.Point(277, 329);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 25);
             this.label3.TabIndex = 2;
@@ -70,7 +70,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(151, 288);
+            this.label4.Location = new System.Drawing.Point(275, 400);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 25);
             this.label4.TabIndex = 3;
@@ -79,9 +79,9 @@
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.LightGreen;
-            this.btnSave.Location = new System.Drawing.Point(256, 360);
+            this.btnSave.Location = new System.Drawing.Point(380, 517);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(132, 34);
+            this.btnSave.Size = new System.Drawing.Size(183, 34);
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -90,9 +90,9 @@
             // btnCancel
             // 
             this.btnCancel.BackColor = System.Drawing.Color.Tomato;
-            this.btnCancel.Location = new System.Drawing.Point(483, 360);
+            this.btnCancel.Location = new System.Drawing.Point(607, 517);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(134, 34);
+            this.btnCancel.Size = new System.Drawing.Size(185, 34);
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -100,43 +100,39 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(256, 82);
+            this.txtName.Location = new System.Drawing.Point(380, 198);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(361, 31);
+            this.txtName.Size = new System.Drawing.Size(412, 31);
             this.txtName.TabIndex = 6;
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(256, 141);
+            this.txtID.Location = new System.Drawing.Point(380, 257);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(361, 31);
+            this.txtID.Size = new System.Drawing.Size(412, 31);
             this.txtID.TabIndex = 7;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(256, 213);
+            this.txtPassword.Location = new System.Drawing.Point(380, 329);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(361, 31);
+            this.txtPassword.Size = new System.Drawing.Size(412, 31);
             this.txtPassword.TabIndex = 8;
             // 
-            // comboBox1
+            // comboBoxCollege
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "2001---CMP_Sharif",
-            "4001---Art_Tehran",
-            "5001---CMP_Tehran"});
-            this.comboBox1.Location = new System.Drawing.Point(256, 285);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(361, 33);
-            this.comboBox1.TabIndex = 10;
+            this.comboBoxCollege.FormattingEnabled = true;
+            this.comboBoxCollege.Location = new System.Drawing.Point(380, 397);
+            this.comboBoxCollege.Name = "comboBoxCollege";
+            this.comboBoxCollege.Size = new System.Drawing.Size(412, 33);
+            this.comboBoxCollege.TabIndex = 10;
             // 
             // AddTeacher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.comboBox1);
+            this.ClientSize = new System.Drawing.Size(1095, 740);
+            this.Controls.Add(this.comboBoxCollege);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.txtName);
@@ -164,6 +160,6 @@
         private TextBox txtName;
         private TextBox txtID;
         private TextBox txtPassword;
-        private ComboBox comboBox1;
+        private ComboBox comboBoxCollege;
     }
 }

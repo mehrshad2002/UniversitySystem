@@ -39,6 +39,10 @@ namespace UniversitySystem.WinApp.AdminForms
             ServiceClass service = new ServiceClass();
 
 
+            if(numberCapacity.Value < 5  )
+            {
+                numberCapacity.Value = 5;
+            }
             int Capacity = Convert.ToInt32(numberCapacity.Value);
             int ID = Convert.ToInt32(txtID.Text);
             int CollegeID = Convert.ToInt32(txtCollegeID.Text);

@@ -21,7 +21,10 @@ namespace UniversitySystem.WinApp.PersonnelForms
             ServiceClass service = new ServiceClass();
             List<Selection> selections = new List<Selection>();
             selections = service.AllSelection();
-            dgSelections.DataSource = selections;   
+            dgSelections.DataSource = selections;
+            List<CollegeAndUnivercity> collegeAndUnivercities = new List<CollegeAndUnivercity>();
+            collegeAndUnivercities = service.ReadAllCollegeJoin();
+            dgCollegeAndUnivercity.DataSource = collegeAndUnivercities;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

@@ -16,6 +16,10 @@ namespace UniversitySystem.WinApp.AdminForms
         public EditUser()
         {
             InitializeComponent();
+            ServiceClass service = new ServiceClass();
+            List<User> users = new List<User>();
+            users = service.ShowAllData();
+            dgUsers.DataSource = users;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

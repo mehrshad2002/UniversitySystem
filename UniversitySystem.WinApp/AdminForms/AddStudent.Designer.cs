@@ -116,6 +116,7 @@
             // 
             // dgCollege
             // 
+            this.dgCollege.AllowUserToAddRows = false;
             this.dgCollege.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgCollege.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCollege.GridColor = System.Drawing.SystemColors.ActiveCaption;

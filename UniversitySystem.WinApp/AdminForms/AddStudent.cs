@@ -19,9 +19,9 @@ namespace UniversitySystem.WinApp.AdminForms
         {
             InitializeComponent();
             ServiceClass service = new ServiceClass();
-            List<College> colleges = new List<College>();
-            colleges = service.ReadAllCollege();
-            dgCollege.DataSource = colleges;
+            List<CollegeAndUnivercity> collegeAndUnivercities = new List<CollegeAndUnivercity>();
+            collegeAndUnivercities = service.ReadAllCollegeJoin();
+            dgCollege.DataSource = collegeAndUnivercities;
         }
 
         private void label3_Click(object sender, EventArgs e)

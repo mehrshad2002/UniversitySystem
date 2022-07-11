@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnShow = new System.Windows.Forms.Button();
             this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridAllData = new System.Windows.Forms.DataGridView();
@@ -50,16 +49,6 @@
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnShow
-            // 
-            this.btnShow.Location = new System.Drawing.Point(470, 413);
-            this.btnShow.Name = "btnShow";
-            this.btnShow.Size = new System.Drawing.Size(356, 86);
-            this.btnShow.TabIndex = 1;
-            this.btnShow.Text = "Show";
-            this.btnShow.UseVisualStyleBackColor = true;
-            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
-            // 
             // userBindingSource
             // 
             this.userBindingSource.DataSource = typeof(UniversitySystem.Classes.User);
@@ -78,6 +67,7 @@
             this.dataGridAllData.RowTemplate.Height = 33;
             this.dataGridAllData.Size = new System.Drawing.Size(1030, 250);
             this.dataGridAllData.TabIndex = 2;
+            this.dataGridAllData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridAllData_CellContentClick);
             // 
             // ShowAllStudents
             // 
@@ -85,7 +75,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1337, 670);
             this.Controls.Add(this.dataGridAllData);
-            this.Controls.Add(this.btnShow);
             this.Controls.Add(this.btnExit);
             this.Name = "ShowAllStudents";
             this.Text = "ShowAllStudents";
@@ -99,7 +88,6 @@
         #endregion
 
         private Button btnExit;
-        private Button btnShow;
         private BindingSource userBindingSource;
         private BindingSource userBindingSource1;
         private DataGridView dataGridAllData;

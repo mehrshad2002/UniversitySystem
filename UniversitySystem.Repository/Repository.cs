@@ -409,10 +409,32 @@ namespace UniversitySystem.Repository
             string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
             SqlConnection con = new SqlConnection(ConString);
             con.Open();
+
+
+            // 1 we want insert and add new Selection Lesson
             string querystring = "insert into Selction " +
                 $"Values({ID} , '{dateTime}' , {Capacity} , null , {collegeID} , {roomID} ,{teacherID} ,{lessonID} , '{Name}') ";
 
             SqlCommand cmd = new SqlCommand(querystring, con);
+            
+            // We want Have all Room Data 
+            string queryReadRoom = "select * from Room " +
+                $"where ID = {roomID} ";
+            SqlCommand cmdFindRoom = new SqlCommand(queryReadRoom, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmdFindRoom);//for read table from db 
+            DataSet tables = new DataSet(); //can read data from row and column 
+            adapter.Fill(tables);
+            var AllRows = tables.Tables[0].Rows;
+
+            foreach(DataRow Row in AllRows)
+            {
+                int CollegeIDFromRoom = Convert.ToInt32(Row["College_ID"]);
+                if( CollegeIDFromRoom != collegeID)
+                {
+                    return false;
+                }
+            }
+
 
             try
             {
@@ -544,7 +566,8 @@ namespace UniversitySystem.Repository
             string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
             SqlConnection con = new SqlConnection(ConString);
             con.Open();
-            string querystring = "select * from Teacher ";
+            string querystring = "select * from Teacher " +
+                "order by College_ID , Name ";
             SqlCommand cmd = new SqlCommand(querystring, con);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);//for read table from db 
             DataSet tables = new DataSet(); //can read data from row and column 

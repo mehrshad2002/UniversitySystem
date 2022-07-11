@@ -33,7 +33,9 @@
             this.dgSelections = new System.Windows.Forms.DataGridView();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.dgCollegeAndUnivercity = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgSelections)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCollegeAndUnivercity)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -60,12 +62,14 @@
             // 
             // dgSelections
             // 
+            this.dgSelections.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgSelections.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSelections.GridColor = System.Drawing.SystemColors.Control;
             this.dgSelections.Location = new System.Drawing.Point(37, 44);
             this.dgSelections.Name = "dgSelections";
             this.dgSelections.RowHeadersWidth = 62;
             this.dgSelections.RowTemplate.Height = 33;
-            this.dgSelections.Size = new System.Drawing.Size(1027, 587);
+            this.dgSelections.Size = new System.Drawing.Size(1027, 273);
             this.dgSelections.TabIndex = 2;
             // 
             // txtID
@@ -84,11 +88,24 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "ID";
             // 
+            // dgCollegeAndUnivercity
+            // 
+            this.dgCollegeAndUnivercity.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgCollegeAndUnivercity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgCollegeAndUnivercity.GridColor = System.Drawing.SystemColors.Control;
+            this.dgCollegeAndUnivercity.Location = new System.Drawing.Point(284, 336);
+            this.dgCollegeAndUnivercity.Name = "dgCollegeAndUnivercity";
+            this.dgCollegeAndUnivercity.RowHeadersWidth = 62;
+            this.dgCollegeAndUnivercity.RowTemplate.Height = 33;
+            this.dgCollegeAndUnivercity.Size = new System.Drawing.Size(516, 202);
+            this.dgCollegeAndUnivercity.TabIndex = 5;
+            // 
             // Selectionlesson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1151, 791);
+            this.ClientSize = new System.Drawing.Size(1151, 867);
+            this.Controls.Add(this.dgCollegeAndUnivercity);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.dgSelections);
@@ -97,6 +114,7 @@
             this.Name = "Selectionlesson";
             this.Text = "Selectionlesson";
             ((System.ComponentModel.ISupportInitialize)(this.dgSelections)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCollegeAndUnivercity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -109,5 +127,6 @@
         private DataGridView dgSelections;
         private TextBox txtID;
         private Label label1;
+        private DataGridView dgCollegeAndUnivercity;
     }
 }
