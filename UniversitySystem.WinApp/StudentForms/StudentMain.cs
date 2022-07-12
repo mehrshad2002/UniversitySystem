@@ -31,8 +31,7 @@ namespace UniversitySystem.WinApp.PersonnelForms
         private void btnSelectionLesson_Click(object sender, EventArgs e)
         {
             ServiceClass serviceClass = new ServiceClass();
-            Selectionlesson selectionlesson = new Selectionlesson();
-            selectionlesson.user = user;
+            Selectionlesson selectionlesson = new Selectionlesson(user);
             this.Hide();
             selectionlesson.Show();
         }

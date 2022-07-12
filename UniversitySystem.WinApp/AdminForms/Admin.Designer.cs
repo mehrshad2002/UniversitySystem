@@ -30,7 +30,6 @@
         {
             this.btnAddStudent = new System.Windows.Forms.Button();
             this.btnRemoveStudent = new System.Windows.Forms.Button();
-            this.btnEditData = new System.Windows.Forms.Button();
             this.btnAddUnivercity = new System.Windows.Forms.Button();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.btnShowStudents = new System.Windows.Forms.Button();
@@ -67,16 +66,6 @@
             this.btnRemoveStudent.Text = "Remove Student";
             this.btnRemoveStudent.UseVisualStyleBackColor = true;
             this.btnRemoveStudent.Click += new System.EventHandler(this.btnRemoveStudent_Click);
-            // 
-            // btnEditData
-            // 
-            this.btnEditData.Location = new System.Drawing.Point(279, 141);
-            this.btnEditData.Name = "btnEditData";
-            this.btnEditData.Size = new System.Drawing.Size(229, 50);
-            this.btnEditData.TabIndex = 2;
-            this.btnEditData.Text = "EditUser";
-            this.btnEditData.UseVisualStyleBackColor = true;
-            this.btnEditData.Click += new System.EventHandler(this.btnEditData_Click);
             // 
             // btnAddUnivercity
             // 
@@ -250,7 +239,6 @@
             this.Controls.Add(this.btnShowStudents);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnAddUnivercity);
-            this.Controls.Add(this.btnEditData);
             this.Controls.Add(this.btnRemoveStudent);
             this.Controls.Add(this.btnAddStudent);
             this.Name = "Admin";
@@ -263,7 +251,6 @@
 
         private Button btnAddStudent;
         private Button btnRemoveStudent;
-        private Button btnEditData;
         private Button btnAddUnivercity;
         private Button btnLogOut;
         private Button btnShowStudents;

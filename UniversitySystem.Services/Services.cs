@@ -29,14 +29,19 @@ namespace UniversitySystem.Services
             return repository.Alllessons();
         }
 
+        public List<Selection> AllSelection()
+        {
+            return repository.AllSelection();
+        }
+
         public List<SelectionForStudentList> SelectionList( int StudentID)
         {
             return repository.SelectionList(StudentID);
         }
 
-        public List<Selection> AllSelection()
+        public List<Selection> AllSelectionNew(int CollegeID)
         {
-            return repository.AllSelection();
+            return repository.AllSelectionNew(CollegeID);
         }
 
         public List<Room> AllRoom()

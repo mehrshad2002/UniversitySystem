@@ -57,6 +57,35 @@ namespace UniversitySystem.Repository
             return selectionList;
         }
 
+        public List<Selection> AllSelectionNew(int CollegeID)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+
+            string querystring = "select * from Selction " +
+                $"where College_ID = {CollegeID} ";
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);//for read table from db 
+            DataSet tables = new DataSet(); //can read data from row and column 
+            adapter.Fill(tables);
+            var AllRows = tables.Tables[0].Rows;
+            List<Selection> selections = new List<Selection>();
+
+            foreach(DataRow Row in AllRows)
+            {
+                Selection sl = new Selection();
+                sl.Name = Convert.ToString(Row["Name"]);
+                sl.ID = Convert.ToInt32(Row["ID"]);
+                sl.dateTime = Convert.ToDateTime(Row["CalssTime"]);
+
+                selections.Add(sl);
+            }
+
+            return selections;
+        }
+
         public bool SaveEditUser(User newUser , int OldID )
         {
             string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
@@ -329,15 +358,15 @@ namespace UniversitySystem.Repository
             foreach (DataRow row in AllRows)
             {
                 Selection selection = new Selection();
-                selection.ID = Convert.ToInt32(row["ID"]);
-                selection.Capacity = Convert.ToInt32(row["Capacity"]);
-                selection.TeacherID = Convert.ToInt32(row["Teacher_ID"]);
+                selection.ID = Convert.ToInt32(row["ID"]);//
+                selection.Capacity = Convert.ToInt32(row["Capacity"]);//
+                selection.TeacherID = Convert.ToInt32(row["Teacher_ID"]);//
                 selection.CollegeID = Convert.ToInt32(row["College_ID"]);
                 selection.StudentID = 0;
-                selection.dateTime = Convert.ToDateTime(row["CalssTime"]);
-                selection.RoomID = Convert.ToInt32(row["Room_ID"]);
+                selection.dateTime = Convert.ToDateTime(row["CalssTime"]);//
+                selection.RoomID = Convert.ToInt32(row["Room_ID"]);//
                 selection.LessonID = Convert.ToInt32(row["Lesson_ID"]);
-                selection.Name = Convert.ToString(row["Name"]);
+                selection.Name = Convert.ToString(row["Name"]);//
                 Selections.Add(selection);
             }
             return Selections;
@@ -351,6 +380,7 @@ namespace UniversitySystem.Repository
             string querystring = "select * from Lessons " +
                 $"where ID  = {lessonID}";
 
+            int i = 0;
 
             SqlCommand cmd = new SqlCommand(querystring, con);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);

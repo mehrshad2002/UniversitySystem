@@ -42,30 +42,27 @@ namespace UniversitySystem.WinApp.AdminForms
             {
                 numberCapacity.Value = 5;
             }
+            Random random = new Random();
             int Capacity = Convert.ToInt32(numberCapacity.Value);
-            int ID = Convert.ToInt32(txtID.Text);
+            int ID = random.Next(900, 30000);
             int CollegeID = Convert.ToInt32((comboBoxCollegeID.SelectedItem as ComboBoxItems).CollegeID);
-            int LessonID = Convert.ToInt32(txtLessonID.Text);
+            int LessonID = Convert.ToInt32((comboBoxLesson.SelectedItem as ComboBoxLesson).ID);
             string Name = service.SayLessonName(LessonID);
             int RoomID = Convert.ToInt32((ComBoRoomID.SelectedItem as ComboBoxRoom).Value);
             int TeacherID = Convert.ToInt32((comboBoxTeacher.SelectedItem as ComboBoxTeacher).ID);
             DateTime dateTime = dtValue.Value.Date + dtValue.Value.TimeOfDay;
-
             bool Result = service.CreateSelection(ID,Capacity , CollegeID , LessonID , RoomID , TeacherID ,dateTime , Name);
+
             if (Result)
             {
                 MessageBox.Show("Done!");
                 numberCapacity.ResetText();
-                txtID.ResetText();
-                txtLessonID.ResetText();
                 dtValue.ResetText();
             }
             else
             {
                 MessageBox.Show("Faild!");
                 numberCapacity.ResetText();
-                txtID.ResetText();
-                txtLessonID.ResetText();
                 dtValue.ResetText();
             }
 

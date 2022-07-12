@@ -29,13 +29,11 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.txtID = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.comboBoxCollege = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
@@ -43,20 +41,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(290, 201);
+            this.label1.Location = new System.Drawing.Point(290, 262);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Name";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(307, 263);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 25);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "ID";
             // 
             // label3
             // 
@@ -100,17 +89,10 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(380, 198);
+            this.txtName.Location = new System.Drawing.Point(380, 259);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(412, 31);
             this.txtName.TabIndex = 6;
-            // 
-            // txtID
-            // 
-            this.txtID.Location = new System.Drawing.Point(380, 257);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(412, 31);
-            this.txtID.TabIndex = 7;
             // 
             // txtPassword
             // 
@@ -134,13 +116,11 @@
             this.ClientSize = new System.Drawing.Size(1095, 740);
             this.Controls.Add(this.comboBoxCollege);
             this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.txtID);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "AddTeacher";
             this.Text = "AddTeacher";
@@ -152,13 +132,11 @@
         #endregion
 
         private Label label1;
-        private Label label2;
         private Label label3;
         private Label label4;
         private Button btnSave;
         private Button btnCancel;
         private TextBox txtName;
-        private TextBox txtID;
         private TextBox txtPassword;
         private ComboBox comboBoxCollege;
     }

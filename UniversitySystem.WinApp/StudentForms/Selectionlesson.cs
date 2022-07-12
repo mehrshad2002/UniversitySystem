@@ -14,37 +14,47 @@ namespace UniversitySystem.WinApp.PersonnelForms
 {
     public partial class Selectionlesson : Form
     {
-        public User user;
-        public Selectionlesson()
+        public static User user;
+        public Selectionlesson(User u)
         {
+            user = u;
             InitializeComponent();
             ServiceClass service = new ServiceClass();
             List<Selection> selections = new List<Selection>();
-            selections = service.AllSelection();
-            dgSelections.DataSource = selections;
+            //selections = service.AllSelection();
+            selections = service.AllSelectionNew(user.CollegeID); 
+
+
+
             List<CollegeAndUnivercity> collegeAndUnivercities = new List<CollegeAndUnivercity>();
             collegeAndUnivercities = service.ReadAllCollegeJoin();
-            dgCollegeAndUnivercity.DataSource = collegeAndUnivercities;
+
+            foreach( Selection selection in selections)
+            {
+                ComboBoxSelection cbSelection = new ComboBoxSelection();
+                cbSelection.Name = selection.Name;
+                cbSelection.dateTime = Convert.ToDateTime(selection.dateTime);
+                cbSelection.ID = selection.ID;
+                comboBoxSelection.Items.Add(cbSelection);
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             Random random = new Random();
             ServiceClass service = new ServiceClass();
-            int SelectionID = Convert.ToInt32(txtID.Text);
-            int ID = random.Next(0,10000);
+            int SelectionID = Convert.ToInt32((comboBoxSelection.SelectedItem as ComboBoxSelection).ID);
+            int ID = random.Next(2000,5000);
             int StudentID = user.CardID;
 
             bool Result = service.MainSelection(ID,SelectionID,StudentID);
             if (Result)
             {
                 MessageBox.Show("Done");
-                txtID.ResetText();
             }
             else
             {
                 MessageBox.Show("Faild");
-                txtID.ResetText();
             }
         }
 

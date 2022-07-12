@@ -30,21 +30,23 @@ namespace UniversitySystem.WinApp.AdminForms
 
             foreach(CollegeAndUnivercity college in CollegeAndUnivercityList)
             {
-                comboBoxCollege.Items.Add(college.CollegeName + " " + college.UnivercityName + " " + college.CollegeID );
-                comboBoxCollege.ValueMember = Convert.ToString(college.CollegeID);
+                ComboBoxItems comboBoxItems = new ComboBoxItems();
+                comboBoxItems.CollegeID = college.CollegeID;
+                comboBoxItems.Name = college.CollegeName;
+                comboBoxItems.UnivercityName = college.UnivercityName;
+                comboBoxCollege.Items.Add(comboBoxItems);
             }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             User user = new User();
-
+            Random random = new Random();
             ServiceClass service = new ServiceClass();
             user.Name = txtName.Text;
-            user.CardID = Convert.ToInt32(txtID.Text);
-            user.CollegeID = Convert.ToInt32(comboBoxCollege.ValueMember);
+            user.CardID = random.Next(1, 1000);
+            user.CollegeID = Convert.ToInt32((comboBoxCollege.SelectedItem as ComboBoxItems).CollegeID);
             user.Password = txtPassword.Text;
-
 
             bool Result = service.AddTeacher(user);
 
@@ -54,7 +56,6 @@ namespace UniversitySystem.WinApp.AdminForms
                 comboBoxCollege.ResetText();
                 txtName.ResetText();
                 txtPassword.ResetText();
-                txtID.ResetText();
             }
             else
             {
@@ -62,7 +63,6 @@ namespace UniversitySystem.WinApp.AdminForms
                 comboBoxCollege.ResetText();
                 txtName.ResetText();
                 txtPassword.ResetText();
-                txtID.ResetText();
             }
 
             
