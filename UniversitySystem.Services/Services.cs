@@ -59,6 +59,11 @@ namespace UniversitySystem.Services
             return repository.MainSelection(ID, selectionID, studentID);
         }
 
+        public bool RemoveUsers(int counter)
+        {
+            return repository.RemoveUsers(counter);
+        }
+
         public bool RemoveSelection(int ID)
         {
             return repository.RemoveSelection(ID);
@@ -74,6 +79,11 @@ namespace UniversitySystem.Services
             return repository.RemoveLesson(ID);
         }
 
+        public bool SaveEditUser(User newUser , int oldID)
+        {
+            return repository.SaveEditUser(newUser , oldID);
+        }
+
         public string SayLessonName(int lessonID)
         {
             return repository.SayLessonName(lessonID);
@@ -87,6 +97,11 @@ namespace UniversitySystem.Services
         public bool RemoveRoom(int ID)
         {
             return repository.RemoveRoom(ID);
+        }
+
+        public User EditUsers(int counter)
+        {
+            return repository.EditUsers(counter);
         }
 
         public List<CollegeAndUnivercity> ReadAllCollegeJoin()

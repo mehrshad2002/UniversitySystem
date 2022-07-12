@@ -57,6 +57,102 @@ namespace UniversitySystem.Repository
             return selectionList;
         }
 
+        public bool SaveEditUser(User newUser , int OldID )
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+
+            string queryUpdateUser = "Update Users " +
+                $"set ID = {newUser.CardID} , Name = '{newUser.Name}' , College_ID = {newUser.CollegeID} , password = '{newUser.Password}' " +
+                $"where ID = {OldID} ";
+            SqlCommand cmd = new SqlCommand(queryUpdateUser, con);
+            try
+            {
+                int Result = cmd.ExecuteNonQuery();
+                if( Result != 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }catch(Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool RemoveUsers(int counter)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+
+            //1 we want find user with data from  dataGrid
+            string querystring = "select * from Users" +
+                " order by Counter ,College_ID , Name";
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);//for read table from db 
+            DataSet tables = new DataSet(); //can read data from row and column 
+            adapter.Fill(tables);
+            var SelectRow = tables.Tables[0].Rows[counter];
+            int ID = Convert.ToInt32(SelectRow.ItemArray[0]);
+
+            //2 we want delete User 
+            string DeleteQuery = "delete Users " +
+                $"where ID = {ID} ";
+            SqlCommand cmdDelete = new SqlCommand(DeleteQuery, con);
+            try
+            {
+                int Result = cmdDelete.ExecuteNonQuery();
+                if( Result == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }catch(Exception e)
+            {
+                return false;
+            }
+
+            return false;
+        }
+
+        public User EditUsers(int counter)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+
+
+
+            //1 we want find user with data from  dataGrid
+            string querystring = "select * from Users" +
+                " order by Counter ,College_ID , Name";
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);//for read table from db 
+            DataSet tables = new DataSet(); //can read data from row and column 
+            adapter.Fill(tables);
+            var SelectRow = tables.Tables[0].Rows[counter];
+            int ID = Convert.ToInt32(SelectRow.ItemArray[0]);
+            string Name = Convert.ToString(SelectRow.ItemArray[1]);
+            string Password = Convert.ToString(SelectRow.ItemArray[2]);
+            int CollegeID = Convert.ToInt32(SelectRow.ItemArray[3]);
+
+            User user = new User();
+            user.Name = Name;
+            user.CardID = ID;
+            user.CollegeID = CollegeID;
+            user.Password = Password;
+
+            return user;
+        }
+
         public bool RemoveSelectionStudent(int ID)
         {
             //1 We want delete One SelectionLesson
@@ -512,7 +608,7 @@ namespace UniversitySystem.Repository
             SqlConnection con = new SqlConnection(ConString);
             con.Open();
             string querystring = "select Univercity.Name as UniName , College.Name , College.ID " +
-                " from college " +
+                " from College " +
                 "join Univercity on College.UnivercityID = Univercity.ID";
 
             SqlCommand cmd = new SqlCommand(querystring, con);
@@ -969,7 +1065,8 @@ namespace UniversitySystem.Repository
             string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
             SqlConnection con = new SqlConnection(ConString);
             con.Open();
-            string querystring = "select * from Users";
+            string querystring = "select * from Users" +
+                " order by Counter ,College_ID , Name";
             SqlCommand cmd = new SqlCommand(querystring, con);
 
 

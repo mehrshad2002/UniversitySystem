@@ -39,9 +39,12 @@ namespace UniversitySystem.WinApp
 
         private void btnShowStudents_Click(object sender, EventArgs e)
         {
-            ShowAllStudents showAll = new ShowAllStudents();
+            ShowAllUsers AllUsers = new ShowAllUsers();
             this.Close();
-            showAll.Show();
+            AllUsers.Show();
+            //ShowAllStudents showAll = new ShowAllStudents();
+            //this.Close();
+            //showAll.Show();
         }
 
         private void btnRemoveStudent_Click(object sender, EventArgs e)

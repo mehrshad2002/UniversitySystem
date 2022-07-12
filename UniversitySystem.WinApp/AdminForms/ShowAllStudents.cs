@@ -23,16 +23,21 @@ namespace UniversitySystem.WinApp.AdminForms
             dataGridAllData.DataSource = ListUser;
 
             // create Column which is Button
-            DataGridViewButtonColumn uninstallButtonColumn = new DataGridViewButtonColumn();
-            uninstallButtonColumn.Name = "Land";
-            uninstallButtonColumn.Text = "Edit";
-            int columnIndex = 2;
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            btn.HeaderText = "Action";
+            btn.Text = "Edit";
+            btn.Name = "Land";
+            btn.UseColumnTextForButtonValue = true;
+            dataGridAllData.Columns.Add(btn);
+
+            int columnIndex = 0;
             if (dataGridAllData.Columns["Land"] == null)
             {
-                dataGridAllData.Columns.Insert(columnIndex, uninstallButtonColumn);
+                dataGridAllData.Columns.Insert(columnIndex, btn);
             }
             dataGridAllData.CellClick += dataGridAllData_CellClick;
-
+            userBindingSource.DataSource = ListUser;
+            dataGridAllData.DataSource = ListUser;
         }
 
         private void dataGridAllData_CellClick(object? sender, DataGridViewCellEventArgs e)
@@ -42,15 +47,11 @@ namespace UniversitySystem.WinApp.AdminForms
 
         private void btnShow_Click(object sender, EventArgs e)
         {
-            //ServiceClass serviceClass = new ServiceClass();
-            //List<User> ListUser =  serviceClass.ShowAllData();
-            //dataGridAllData.DataSource = ListUser;
         }
 
         //useless
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -60,9 +61,18 @@ namespace UniversitySystem.WinApp.AdminForms
             this.Close();
         }
 
-        private void dataGridAllData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void ShowAllStudents_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void dtOne_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
