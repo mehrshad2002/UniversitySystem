@@ -56,8 +56,6 @@ namespace UniversitySystem.WinApp.AdminForms
             newUser.CardID  = Convert.ToInt32(txtID.Text);
             newUser.CollegeID  = Convert.ToInt32(comboBoxCollegeID.ValueMember);
 
-            int i = 0;
-
             bool Result = service.SaveEditUser(newUser , OldID);
             if (Result)
             {

@@ -61,15 +61,25 @@ namespace UniversitySystem.WinApp
             {
 
             }
-
-
-
-            
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void chkShowHidePassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkShowHidePassword.Checked)
+            {
+                chkShowHidePassword.Text = "Hide";
+                txtPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                chkShowHidePassword.Text = "Show";
+                txtPassword.PasswordChar = '*';
+            }
         }
     }
 }

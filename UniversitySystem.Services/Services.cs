@@ -139,6 +139,11 @@ namespace UniversitySystem.Services
             return 0;
         }
 
+        public List<Room> AllRoomForCreation(int collegeID)
+        {
+            return repository.AllRoomForCreation(collegeID);
+        }
+
         public List<Univercity> ReadAllUnivercity()
         {
             return repository.ReadAllUnivercity();
@@ -152,6 +157,16 @@ namespace UniversitySystem.Services
         public int FindUnivercityID(string findUnivercityID )
         {
             return repository.FinUnivercityID(findUnivercityID);
+        }
+
+        public List<Teacher> AllTeacherForCreation(int collegeID)
+        {
+            return repository.AllTeacherForCreation(collegeID);
+        }
+
+        public List<Lesson> AlllessonCreate(int collegeID)
+        {
+            return repository.AlllessonCreate(collegeID);
         }
 
         public bool SearchTeacher(Teacher teacher, int ID)

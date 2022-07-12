@@ -35,6 +35,7 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelLogin = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
+            this.chkShowHidePassword = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -56,8 +57,9 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(288, 175);
+            this.txtPassword.Location = new System.Drawing.Point(288, 173);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(229, 31);
             this.txtPassword.TabIndex = 2;
             // 
@@ -99,11 +101,23 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // chkShowHidePassword
+            // 
+            this.chkShowHidePassword.AutoSize = true;
+            this.chkShowHidePassword.Location = new System.Drawing.Point(548, 174);
+            this.chkShowHidePassword.Name = "chkShowHidePassword";
+            this.chkShowHidePassword.Size = new System.Drawing.Size(82, 29);
+            this.chkShowHidePassword.TabIndex = 7;
+            this.chkShowHidePassword.Text = "Show";
+            this.chkShowHidePassword.UseVisualStyleBackColor = true;
+            this.chkShowHidePassword.CheckedChanged += new System.EventHandler(this.chkShowHidePassword_CheckedChanged);
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 353);
+            this.Controls.Add(this.chkShowHidePassword);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.labelLogin);
             this.Controls.Add(this.labelPassword);
@@ -127,5 +141,6 @@
         private Label labelPassword;
         private Label labelLogin;
         private Button btnExit;
+        private CheckBox chkShowHidePassword;
     }
 }

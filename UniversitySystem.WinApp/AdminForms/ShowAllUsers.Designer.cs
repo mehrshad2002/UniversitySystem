@@ -43,6 +43,9 @@
             // dgUsers
             // 
             this.dgUsers.AutoGenerateColumns = false;
+            this.dgUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgUsers.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgUsers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameDataGridViewTextBoxColumn,
@@ -50,7 +53,7 @@
             this.cardIDDataGridViewTextBoxColumn,
             this.collegeIDDataGridViewTextBoxColumn});
             this.dgUsers.DataSource = this.userBindingSource;
-            this.dgUsers.Location = new System.Drawing.Point(153, 50);
+            this.dgUsers.Location = new System.Drawing.Point(141, 71);
             this.dgUsers.Name = "dgUsers";
             this.dgUsers.RowHeadersWidth = 62;
             this.dgUsers.RowTemplate.Height = 33;
@@ -64,7 +67,6 @@
             this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
             this.nameDataGridViewTextBoxColumn.MinimumWidth = 8;
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.Width = 150;
             // 
             // passwordDataGridViewTextBoxColumn
             // 
@@ -72,7 +74,6 @@
             this.passwordDataGridViewTextBoxColumn.HeaderText = "Password";
             this.passwordDataGridViewTextBoxColumn.MinimumWidth = 8;
             this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
-            this.passwordDataGridViewTextBoxColumn.Width = 150;
             // 
             // cardIDDataGridViewTextBoxColumn
             // 
@@ -80,7 +81,6 @@
             this.cardIDDataGridViewTextBoxColumn.HeaderText = "CardID";
             this.cardIDDataGridViewTextBoxColumn.MinimumWidth = 8;
             this.cardIDDataGridViewTextBoxColumn.Name = "cardIDDataGridViewTextBoxColumn";
-            this.cardIDDataGridViewTextBoxColumn.Width = 150;
             // 
             // collegeIDDataGridViewTextBoxColumn
             // 
@@ -88,7 +88,6 @@
             this.collegeIDDataGridViewTextBoxColumn.HeaderText = "CollegeID";
             this.collegeIDDataGridViewTextBoxColumn.MinimumWidth = 8;
             this.collegeIDDataGridViewTextBoxColumn.Name = "collegeIDDataGridViewTextBoxColumn";
-            this.collegeIDDataGridViewTextBoxColumn.Width = 150;
             // 
             // userBindingSource
             // 

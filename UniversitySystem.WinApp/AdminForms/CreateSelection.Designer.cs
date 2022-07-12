@@ -31,33 +31,27 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.txtID = new System.Windows.Forms.TextBox();
-            this.dgCollege = new System.Windows.Forms.DataGridView();
-            this.txtCollegeID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtTeacherID = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtLessonID = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtRoom = new System.Windows.Forms.TextBox();
             this.dtValue = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
-            this.dgTeacher = new System.Windows.Forms.DataGridView();
-            this.dgLesson = new System.Windows.Forms.DataGridView();
-            this.dgRoom = new System.Windows.Forms.DataGridView();
             this.numberCapacity = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.dgCollege)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgTeacher)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgLesson)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgRoom)).BeginInit();
+            this.comboBoxCollegeID = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.ComBoRoomID = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBoxTeacher = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBoxLesson = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numberCapacity)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(941, 656);
+            this.btnCancel.Location = new System.Drawing.Point(941, 662);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(576, 68);
             this.btnCancel.TabIndex = 0;
@@ -67,7 +61,7 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(941, 575);
+            this.btnCreate.Location = new System.Drawing.Point(941, 581);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(576, 68);
             this.btnCreate.TabIndex = 1;
@@ -81,24 +75,6 @@
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(486, 31);
             this.txtID.TabIndex = 3;
-            // 
-            // dgCollege
-            // 
-            this.dgCollege.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dgCollege.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgCollege.Location = new System.Drawing.Point(23, 45);
-            this.dgCollege.Name = "dgCollege";
-            this.dgCollege.RowHeadersWidth = 62;
-            this.dgCollege.RowTemplate.Height = 33;
-            this.dgCollege.Size = new System.Drawing.Size(842, 150);
-            this.dgCollege.TabIndex = 4;
-            // 
-            // txtCollegeID
-            // 
-            this.txtCollegeID.Location = new System.Drawing.Point(1031, 164);
-            this.txtCollegeID.Name = "txtCollegeID";
-            this.txtCollegeID.Size = new System.Drawing.Size(486, 31);
-            this.txtCollegeID.TabIndex = 5;
             // 
             // label1
             // 
@@ -118,35 +94,10 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "ID";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(931, 170);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 25);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "College ID";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(931, 245);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 25);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Teacher ID";
-            // 
-            // txtTeacherID
-            // 
-            this.txtTeacherID.Location = new System.Drawing.Point(1031, 239);
-            this.txtTeacherID.Name = "txtTeacherID";
-            this.txtTeacherID.Size = new System.Drawing.Size(486, 31);
-            this.txtTeacherID.TabIndex = 9;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(931, 310);
+            this.label5.Location = new System.Drawing.Point(931, 186);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 25);
             this.label5.TabIndex = 12;
@@ -154,30 +105,14 @@
             // 
             // txtLessonID
             // 
-            this.txtLessonID.Location = new System.Drawing.Point(1031, 304);
+            this.txtLessonID.Location = new System.Drawing.Point(1031, 180);
             this.txtLessonID.Name = "txtLessonID";
             this.txtLessonID.Size = new System.Drawing.Size(486, 31);
             this.txtLessonID.TabIndex = 11;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(931, 380);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 25);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Room ID";
-            // 
-            // txtRoom
-            // 
-            this.txtRoom.Location = new System.Drawing.Point(1031, 374);
-            this.txtRoom.Name = "txtRoom";
-            this.txtRoom.Size = new System.Drawing.Size(486, 31);
-            this.txtRoom.TabIndex = 13;
-            // 
             // dtValue
             // 
-            this.dtValue.Location = new System.Drawing.Point(1031, 438);
+            this.dtValue.Location = new System.Drawing.Point(1031, 314);
             this.dtValue.Name = "dtValue";
             this.dtValue.Size = new System.Drawing.Size(486, 31);
             this.dtValue.TabIndex = 15;
@@ -185,44 +120,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(946, 444);
+            this.label7.Location = new System.Drawing.Point(946, 320);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 25);
             this.label7.TabIndex = 16;
             this.label7.Text = "Date";
-            // 
-            // dgTeacher
-            // 
-            this.dgTeacher.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgTeacher.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTeacher.Location = new System.Drawing.Point(23, 220);
-            this.dgTeacher.Name = "dgTeacher";
-            this.dgTeacher.RowHeadersWidth = 62;
-            this.dgTeacher.RowTemplate.Height = 33;
-            this.dgTeacher.Size = new System.Drawing.Size(842, 155);
-            this.dgTeacher.TabIndex = 17;
-            // 
-            // dgLesson
-            // 
-            this.dgLesson.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgLesson.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgLesson.Location = new System.Drawing.Point(23, 401);
-            this.dgLesson.Name = "dgLesson";
-            this.dgLesson.RowHeadersWidth = 62;
-            this.dgLesson.RowTemplate.Height = 33;
-            this.dgLesson.Size = new System.Drawing.Size(842, 149);
-            this.dgLesson.TabIndex = 18;
-            // 
-            // dgRoom
-            // 
-            this.dgRoom.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgRoom.Location = new System.Drawing.Point(23, 575);
-            this.dgRoom.Name = "dgRoom";
-            this.dgRoom.RowHeadersWidth = 62;
-            this.dgRoom.RowTemplate.Height = 33;
-            this.dgRoom.Size = new System.Drawing.Size(842, 149);
-            this.dgRoom.TabIndex = 19;
             // 
             // numberCapacity
             // 
@@ -231,37 +133,102 @@
             this.numberCapacity.Size = new System.Drawing.Size(486, 31);
             this.numberCapacity.TabIndex = 20;
             // 
+            // comboBoxCollegeID
+            // 
+            this.comboBoxCollegeID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBoxCollegeID.FormattingEnabled = true;
+            this.comboBoxCollegeID.Location = new System.Drawing.Point(1031, 378);
+            this.comboBoxCollegeID.Name = "comboBoxCollegeID";
+            this.comboBoxCollegeID.Size = new System.Drawing.Size(486, 33);
+            this.comboBoxCollegeID.TabIndex = 21;
+            this.comboBoxCollegeID.CausesValidationChanged += new System.EventHandler(this.comboBoxCollegeID_CausesValidationChanged);
+            this.comboBoxCollegeID.TextChanged += new System.EventHandler(this.comboBoxCollegeID_TextChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(920, 386);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(94, 25);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "College ID";
+            // 
+            // ComBoRoomID
+            // 
+            this.ComBoRoomID.FormattingEnabled = true;
+            this.ComBoRoomID.Location = new System.Drawing.Point(1031, 434);
+            this.ComBoRoomID.Name = "ComBoRoomID";
+            this.ComBoRoomID.Size = new System.Drawing.Size(486, 33);
+            this.ComBoRoomID.TabIndex = 23;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(931, 442);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(83, 25);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "Room ID";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(931, 259);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 25);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Teacher";
+            // 
+            // comboBoxTeacher
+            // 
+            this.comboBoxTeacher.FormattingEnabled = true;
+            this.comboBoxTeacher.Location = new System.Drawing.Point(1031, 251);
+            this.comboBoxTeacher.Name = "comboBoxTeacher";
+            this.comboBoxTeacher.Size = new System.Drawing.Size(486, 33);
+            this.comboBoxTeacher.TabIndex = 25;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(931, 510);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 25);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "Lesson";
+            // 
+            // comboBoxLesson
+            // 
+            this.comboBoxLesson.FormattingEnabled = true;
+            this.comboBoxLesson.Location = new System.Drawing.Point(1031, 502);
+            this.comboBoxLesson.Name = "comboBoxLesson";
+            this.comboBoxLesson.Size = new System.Drawing.Size(486, 33);
+            this.comboBoxLesson.TabIndex = 27;
+            // 
             // CreateSelection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1544, 844);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.comboBoxLesson);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.comboBoxTeacher);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.ComBoRoomID);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.comboBoxCollegeID);
             this.Controls.Add(this.numberCapacity);
-            this.Controls.Add(this.dgRoom);
-            this.Controls.Add(this.dgLesson);
-            this.Controls.Add(this.dgTeacher);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dtValue);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtRoom);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtLessonID);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtTeacherID);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtCollegeID);
-            this.Controls.Add(this.dgCollege);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.btnCancel);
             this.Name = "CreateSelection";
             this.Text = "CreateSelection";
-            ((System.ComponentModel.ISupportInitialize)(this.dgCollege)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgTeacher)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgLesson)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgRoom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numberCapacity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -273,22 +240,20 @@
         private Button btnCancel;
         private Button btnCreate;
         private TextBox txtID;
-        private DataGridView dgCollege;
-        private TextBox txtCollegeID;
         private Label label1;
         private Label label2;
-        private Label label3;
-        private Label label4;
-        private TextBox txtTeacherID;
         private Label label5;
         private TextBox txtLessonID;
-        private Label label6;
-        private TextBox txtRoom;
         private DateTimePicker dtValue;
         private Label label7;
-        private DataGridView dgTeacher;
-        private DataGridView dgLesson;
-        private DataGridView dgRoom;
         private NumericUpDown numberCapacity;
+        private ComboBox comboBoxCollegeID;
+        private Label label8;
+        private ComboBox ComBoRoomID;
+        private Label label9;
+        private Label label3;
+        private ComboBox comboBoxTeacher;
+        private Label label4;
+        private ComboBox comboBoxLesson;
     }
 }

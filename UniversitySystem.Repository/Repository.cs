@@ -123,13 +123,94 @@ namespace UniversitySystem.Repository
             return false;
         }
 
-        public User EditUsers(int counter)
+        public List<Lesson> AlllessonCreate(int collegeID)
         {
             string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
             SqlConnection con = new SqlConnection(ConString);
             con.Open();
 
+            //1 we want find user with data from  dataGrid
+            string querystring = "select * from Lessons " +
+                $"where CollegeID = {collegeID}";
 
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);//for read table from db 
+            DataSet tables = new DataSet(); //can read data from row and column 
+            adapter.Fill(tables);
+            var AllRows = tables.Tables[0].Rows;
+            List<Lesson> Lessons = new List<Lesson>();
+            foreach (DataRow Row in AllRows)
+            {
+                Lesson lesson = new Lesson();
+                lesson.Name = Convert.ToString(Row["Name"]);
+                lesson.ID = Convert.ToInt32(Row["ID"]);
+                lesson.CollegeID = Convert.ToInt32(Row["CollegeID"]);
+
+                Lessons.Add(lesson);
+            }
+
+            return Lessons;
+        }
+
+        public List<Teacher> AllTeacherForCreation(int collegeID)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+
+            //1 we want find user with data from  dataGrid
+            string querystring = "select * from Teacher " +
+                $"where College_ID = {collegeID} ";
+
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);//for read table from db 
+            DataSet tables = new DataSet(); //can read data from row and column 
+            adapter.Fill(tables);
+            var AllRows = tables.Tables[0].Rows;
+            List<Teacher> Teachers = new List<Teacher>();
+            foreach (DataRow Row in AllRows)
+            {
+                Teacher teacher = new Teacher();
+                teacher.Name = Convert.ToString(Row["Name"]);
+                teacher.ID = Convert.ToInt32(Row["ID"]);
+                Teachers.Add(teacher);
+            }
+
+            return Teachers;
+        }
+
+        public List<Room> AllRoomForCreation(int collegeID)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+
+            //1 we want find user with data from  dataGrid
+            string querystring = "select * from Room " +
+                $"where College_ID = {collegeID} ";
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);//for read table from db 
+            DataSet tables = new DataSet(); //can read data from row and column 
+            adapter.Fill(tables);
+            var AllRows = tables.Tables[0].Rows;
+            List<Room> rooms = new List<Room>();
+            foreach(DataRow Row in AllRows)
+            {
+                Room room = new Room();
+                room.ID = Convert.ToInt32(Row["ID"]);
+                room.CollageID = Convert.ToInt32(Row["College_ID"]);
+                rooms.Add(room);
+            }
+            return rooms;
+        }
+
+        public User EditUsers(int counter)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
 
             //1 we want find user with data from  dataGrid
             string querystring = "select * from Users" +
