@@ -39,22 +39,35 @@ namespace UniversitySystem.WinApp.PersonnelForms
             }
         }
 
+        private void ComboBoxListValue()
+        {
+
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             Random random = new Random();
             ServiceClass service = new ServiceClass();
-            int SelectionID = Convert.ToInt32((comboBoxSelection.SelectedItem as ComboBoxSelection).ID);
-            int ID = random.Next(2000,5000);
-            int StudentID = user.CardID;
 
-            bool Result = service.MainSelection(ID,SelectionID,StudentID);
-            if (Result)
+            if(comboBoxSelection.Text == "")
             {
-                MessageBox.Show("Done");
+                MessageBox.Show("Invalid Selection Name Or ID\nTry Again");
             }
             else
             {
-                MessageBox.Show("Faild");
+                int SelectionID = Convert.ToInt32((comboBoxSelection.SelectedItem as ComboBoxSelection).ID);
+                int ID = random.Next(2000,5000);
+                int StudentID = user.CardID;
+
+                bool Result = service.MainSelection(ID,SelectionID,StudentID);
+                if (Result)
+                {
+                    MessageBox.Show("Done");
+                }
+                else
+                {
+                    MessageBox.Show("Faild");
+                }
             }
         }
 

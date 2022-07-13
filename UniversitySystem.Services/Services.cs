@@ -44,6 +44,11 @@ namespace UniversitySystem.Services
             return repository.AllSelectionNew(CollegeID);
         }
 
+        public List<CollegeAndUnivercity> ReadAllCollegeJoinForSelectionNew()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Room> AllRoom()
         {
             return repository.AllRooms();
@@ -67,6 +72,11 @@ namespace UniversitySystem.Services
         public bool RemoveUsers(int counter)
         {
             return repository.RemoveUsers(counter);
+        }
+
+        public bool RemoveCollegeNew(int counter)
+        {
+            return repository.RemoveCollegeNew(counter);
         }
 
         public bool RemoveSelection(int ID)

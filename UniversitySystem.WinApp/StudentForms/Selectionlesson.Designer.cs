@@ -57,10 +57,11 @@
             // 
             // comboBoxSelection
             // 
+            this.comboBoxSelection.Font = new System.Drawing.Font("Segoe UI Historic", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.comboBoxSelection.FormattingEnabled = true;
             this.comboBoxSelection.Location = new System.Drawing.Point(175, 297);
             this.comboBoxSelection.Name = "comboBoxSelection";
-            this.comboBoxSelection.Size = new System.Drawing.Size(780, 33);
+            this.comboBoxSelection.Size = new System.Drawing.Size(780, 44);
             this.comboBoxSelection.TabIndex = 6;
             // 
             // Selectionlesson

@@ -14,60 +14,52 @@ namespace UniversitySystem.WinApp.AdminForms
 {
     public partial class RemoveCollege : Form
     {
+        public static int Flag  = 1 ; 
         public RemoveCollege()
         {
             InitializeComponent();
-            ServiceClass service = new ServiceClass();
-            List<College> AllCollege = service.ReadAllCollege();
-
-            foreach (var item in AllCollege)
-            {
-                string UnivercityName = service.SayUnivercityName(Convert.ToInt32(item.UnivercityID));
-                comboBoxCollege.Items.Add(item.Name + " --- " + UnivercityName + " --- College_ID : " + item.Id);
-            }
+            DataGridDeleteList();
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void DataGridDeleteList()
         {
             ServiceClass service = new ServiceClass();
-            int CollegeID = Convert.ToInt32(txtIDInput.Text);
-            bool Result = service.DeleteCollege(CollegeID);
+            List<CollegeAndUnivercity> colleges = new List<CollegeAndUnivercity>();
+            colleges = service.ReadAllCollegeJoin();
+            dgCollege.DataSource = colleges ;
 
-            if( Result)
+            if( Flag == 1)
             {
-                MessageBox.Show("Done");
-                comboBoxCollege.ResetText();
-                txtIDInput.ResetText();
+                DataGridViewButtonColumn DeleteBtn = new DataGridViewButtonColumn();
+                DeleteBtn.HeaderText = "Delete";
+                DeleteBtn.Text = "Delete";
+                DeleteBtn.Name = "Delete";
+                DeleteBtn.UseColumnTextForButtonValue = true;
+                dgCollege.Columns.Add(DeleteBtn);
+
+                Flag = 0;
             }
-            else
+        }
+        private void dgCollege_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 4)
             {
-                MessageBox.Show("Faild!");
-                comboBoxCollege.ResetText();
-                txtIDInput.ResetText();
+                ServiceClass service = new ServiceClass();
+                int Counter = e.RowIndex;
+                bool Result = service.RemoveCollegeNew(Counter);
+                if (Result)
+                {
+                    MessageBox.Show("Done!");
+                    DataGridDeleteList();
+                }
+                else
+                {
+                    MessageBox.Show("Faild!");
+                }
             }
-            //int FindUnivercityID = Convert.ToInt32(txtIDInput.Text);//college code 
-            //int UnivercityID = service.FindUnivercityID(FindUnivercityID);
-
-            //if (UnivercityID == 0)
-            //{
-            //    MessageBox.Show("Faild");
-            //    comboBoxCollege.ResetText();
-            //}
-            //else
-            //{
-            //    bool Result = service.DeleteCollege(UnivercityID);
-            //    if(Result)
-            //    {
-            //        MessageBox.Show("Done.");
-            //        comboBoxCollege.ResetText();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Faild!");
-            //        comboBoxCollege.ResetText();
-            //    }
-            //}
-
+        }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -76,5 +68,11 @@ namespace UniversitySystem.WinApp.AdminForms
             this.Close();
             admin.Show();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
     }
 }

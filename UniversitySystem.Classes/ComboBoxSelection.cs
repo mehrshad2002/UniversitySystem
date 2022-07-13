@@ -14,7 +14,7 @@ namespace UniversitySystem.Classes
 
         public override string ToString()
         {
-            return ( Name + " " + dateTime );
+            return ("Name : " +  Name + "   Time : " + dateTime );
         }
     }
 }

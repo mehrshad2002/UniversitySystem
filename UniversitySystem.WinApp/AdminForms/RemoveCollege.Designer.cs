@@ -28,92 +28,103 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.comboBoxCollege = new System.Windows.Forms.ComboBox();
-            this.labelID = new System.Windows.Forms.Label();
-            this.txtIDInput = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.dgCollege = new System.Windows.Forms.DataGridView();
+            this.collegeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.collegeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.univercityNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.collegeAndUnivercityBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.dgCollege)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.collegeAndUnivercityBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(483, 286);
+            this.btnCancel.Location = new System.Drawing.Point(657, 531);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(112, 34);
+            this.btnCancel.Size = new System.Drawing.Size(259, 158);
             this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnDelete
+            // dgCollege
             // 
-            this.btnDelete.Location = new System.Drawing.Point(225, 286);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(112, 34);
-            this.btnDelete.TabIndex = 1;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.dgCollege.AutoGenerateColumns = false;
+            this.dgCollege.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgCollege.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgCollege.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgCollege.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.collegeIDDataGridViewTextBoxColumn,
+            this.collegeNameDataGridViewTextBoxColumn,
+            this.univercityNameDataGridViewTextBoxColumn,
+            this.Delete});
+            this.dgCollege.DataSource = this.collegeAndUnivercityBindingSource;
+            this.dgCollege.Location = new System.Drawing.Point(345, 196);
+            this.dgCollege.Name = "dgCollege";
+            this.dgCollege.RowHeadersWidth = 62;
+            this.dgCollege.RowTemplate.Height = 33;
+            this.dgCollege.Size = new System.Drawing.Size(895, 225);
+            this.dgCollege.TabIndex = 6;
+            this.dgCollege.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCollege_CellClick);
+            this.dgCollege.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // comboBoxCollege
+            // collegeIDDataGridViewTextBoxColumn
             // 
-            this.comboBoxCollege.FormattingEnabled = true;
-            this.comboBoxCollege.Location = new System.Drawing.Point(225, 134);
-            this.comboBoxCollege.Name = "comboBoxCollege";
-            this.comboBoxCollege.Size = new System.Drawing.Size(370, 33);
-            this.comboBoxCollege.TabIndex = 2;
+            this.collegeIDDataGridViewTextBoxColumn.DataPropertyName = "CollegeID";
+            this.collegeIDDataGridViewTextBoxColumn.HeaderText = "CollegeID";
+            this.collegeIDDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.collegeIDDataGridViewTextBoxColumn.Name = "collegeIDDataGridViewTextBoxColumn";
             // 
-            // labelID
+            // collegeNameDataGridViewTextBoxColumn
             // 
-            this.labelID.AutoSize = true;
-            this.labelID.Location = new System.Drawing.Point(153, 134);
-            this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(44, 25);
-            this.labelID.TabIndex = 3;
-            this.labelID.Text = "Info";
+            this.collegeNameDataGridViewTextBoxColumn.DataPropertyName = "CollegeName";
+            this.collegeNameDataGridViewTextBoxColumn.HeaderText = "CollegeName";
+            this.collegeNameDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.collegeNameDataGridViewTextBoxColumn.Name = "collegeNameDataGridViewTextBoxColumn";
             // 
-            // txtIDInput
+            // univercityNameDataGridViewTextBoxColumn
             // 
-            this.txtIDInput.Location = new System.Drawing.Point(225, 199);
-            this.txtIDInput.Name = "txtIDInput";
-            this.txtIDInput.Size = new System.Drawing.Size(370, 31);
-            this.txtIDInput.TabIndex = 4;
+            this.univercityNameDataGridViewTextBoxColumn.DataPropertyName = "UnivercityName";
+            this.univercityNameDataGridViewTextBoxColumn.HeaderText = "UnivercityName";
+            this.univercityNameDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.univercityNameDataGridViewTextBoxColumn.Name = "univercityNameDataGridViewTextBoxColumn";
             // 
-            // label1
+            // Delete
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(153, 205);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 25);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "ID";
+            this.Delete.HeaderText = "Delete";
+            this.Delete.MinimumWidth = 8;
+            this.Delete.Name = "Delete";
+            // 
+            // collegeAndUnivercityBindingSource
+            // 
+            this.collegeAndUnivercityBindingSource.DataSource = typeof(UniversitySystem.Classes.CollegeAndUnivercity);
             // 
             // RemoveCollege
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtIDInput);
-            this.Controls.Add(this.labelID);
-            this.Controls.Add(this.comboBoxCollege);
-            this.Controls.Add(this.btnDelete);
+            this.ClientSize = new System.Drawing.Size(1485, 800);
+            this.Controls.Add(this.dgCollege);
             this.Controls.Add(this.btnCancel);
             this.Name = "RemoveCollege";
             this.Text = "RemoveCollege";
+            ((System.ComponentModel.ISupportInitialize)(this.dgCollege)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.collegeAndUnivercityBindingSource)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private Button btnCancel;
-        private Button btnDelete;
-        private ComboBox comboBoxCollege;
-        private Label labelID;
-        private TextBox txtIDInput;
-        private Label label1;
+        private DataGridView dgCollege;
+        private BindingSource collegeAndUnivercityBindingSource;
+        private DataGridViewTextBoxColumn collegeIDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn collegeNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn univercityNameDataGridViewTextBoxColumn;
+        private DataGridViewButtonColumn Delete;
     }
 }

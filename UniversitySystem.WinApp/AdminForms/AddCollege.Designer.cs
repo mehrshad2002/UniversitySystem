@@ -29,11 +29,9 @@
         private void InitializeComponent()
         {
             this.labelName = new System.Windows.Forms.Label();
-            this.labelID = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.comboBoxAllCollege = new System.Windows.Forms.ComboBox();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.txtID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -46,15 +44,6 @@
             this.labelName.Size = new System.Drawing.Size(59, 25);
             this.labelName.TabIndex = 0;
             this.labelName.Text = "Name";
-            // 
-            // labelID
-            // 
-            this.labelID.AutoSize = true;
-            this.labelID.Location = new System.Drawing.Point(173, 264);
-            this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(30, 25);
-            this.labelID.TabIndex = 1;
-            this.labelID.Text = "ID";
             // 
             // btnSave
             // 
@@ -80,13 +69,6 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(358, 31);
             this.txtName.TabIndex = 4;
-            // 
-            // txtID
-            // 
-            this.txtID.Location = new System.Drawing.Point(238, 258);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(358, 31);
-            this.txtID.TabIndex = 5;
             // 
             // label3
             // 
@@ -114,11 +96,9 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtID);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.comboBoxAllCollege);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.labelID);
             this.Controls.Add(this.labelName);
             this.Name = "AddCollege";
             this.Text = "AddCollege";
@@ -130,11 +110,9 @@
         #endregion
 
         private Label labelName;
-        private Label labelID;
         private Button btnSave;
         private ComboBox comboBoxAllCollege;
         private TextBox txtName;
-        private TextBox txtID;
         private Label label3;
         private Button btnCancel;
     }

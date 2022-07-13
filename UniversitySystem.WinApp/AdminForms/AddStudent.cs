@@ -31,9 +31,13 @@ namespace UniversitySystem.WinApp.AdminForms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            Random random = new Random();
             NewUser = new User();
+            
             string name = textBoxName.Text;
-            int StudentID = Convert.ToInt32(textBoxStudentID.Text);
+            int StudentID = 4000000;
+            StudentID += random.Next(1000,9999);
+            int i = 0;
             string Password = textBoxPassword.Text;
             int CollegeID = Convert.ToInt32(txtCollegeID.Text);
 
@@ -52,7 +56,6 @@ namespace UniversitySystem.WinApp.AdminForms
                 MessageBox.Show("Done!");
                 textBoxName.ResetText();
                 textBoxPassword.ResetText();
-                textBoxStudentID.ResetText();
                 txtCollegeID.ResetText();
             }
             else
@@ -60,7 +63,6 @@ namespace UniversitySystem.WinApp.AdminForms
                 MessageBox.Show("Faild!\nSame Student_ID Or Invalid Data.\nPlease Check Student ID first");
                 textBoxName.ResetText();
                 textBoxPassword.ResetText();
-                textBoxStudentID.ResetText();
                 txtCollegeID.ResetText();
             }
 

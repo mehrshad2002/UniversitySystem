@@ -57,6 +57,51 @@ namespace UniversitySystem.Repository
             return selectionList;
         }
 
+        // New Remove College Method 
+        public bool RemoveCollegeNew(int counter)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+            string querystring = "select Univercity.Name as UniName , College.Name , College.ID " +
+                " from College " +
+                "join Univercity on College.UnivercityID = Univercity.ID";
+
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);//for read table from db 
+            DataSet tables = new DataSet(); //can read data from row and column 
+            adapter.Fill(tables);
+
+            //find Selection ID wich will be deleted 
+            var SelectRow = tables.Tables[0].Rows[counter];
+            int ID = Convert.ToInt32(SelectRow.ItemArray[2]);
+
+            int i = 0;
+            string queryDelete = "delete from College " +
+                $"where ID = {ID}";
+
+            SqlCommand DeleteCmd = new SqlCommand(queryDelete, con);
+            try
+            {
+                int Result = DeleteCmd.ExecuteNonQuery();
+                if (Result == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+
+            return true;
+        }
+
         // Remove Selection 
         public bool RemoveSelectionLessonNew(int counter, User user)
         {
@@ -82,7 +127,6 @@ namespace UniversitySystem.Repository
             string deleteQuery = "delete from SelectionList " +
                 $"where ID = {ID} ";
 
-            int i5 = 0;
             SqlCommand DeleteCmd = new SqlCommand(deleteQuery, con);
             try
             {

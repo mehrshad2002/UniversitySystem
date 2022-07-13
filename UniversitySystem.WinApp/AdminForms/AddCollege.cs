@@ -31,34 +31,32 @@ namespace UniversitySystem.WinApp.AdminForms
         {
             College college = new College();
             ServiceClass service = new ServiceClass();
+            Random random = new Random();
 
             string FindUnivercityID = comboBoxAllCollege.Text;
             int UnivercityID = Convert.ToInt32(service.FindUnivercityID(FindUnivercityID));
             if( UnivercityID == 0)
             {
                 MessageBox.Show("Faild");
-                txtID.ResetText();
                 txtName.ResetText();
                 comboBoxAllCollege.ResetText();
             }
             else
             {
                 college.UnivercityID = UnivercityID;
-                college.Id = Convert.ToInt32(txtID.Text); 
+                college.Id = random.Next(40,70);
                 college.Name = txtName.Text;
 
                 bool Result = service.AddCollege(college);
                 if( Result == true)
                 {
                     MessageBox.Show("Done");
-                    txtID.ResetText();
                     txtName.ResetText();
                     comboBoxAllCollege.ResetText();
                 }
                 else
                 {
                     MessageBox.Show("Faild");
-                    txtID.ResetText();
                     txtName.ResetText();
                     comboBoxAllCollege.ResetText();
                 }
