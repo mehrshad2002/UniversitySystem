@@ -84,7 +84,7 @@ namespace UniversitySystem.Repository
             try
             {
                 int Result = DeleteCmd.ExecuteNonQuery();
-                if (Result == 0)
+                if (Result == 0) 
                 {
                     return false;
                 }
