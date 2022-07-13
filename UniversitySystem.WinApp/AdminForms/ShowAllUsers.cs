@@ -14,7 +14,7 @@ namespace UniversitySystem.WinApp.AdminForms
 {
     public partial class ShowAllUsers : Form
     {
-        static int Falg = 1;
+        static int Flag = 1;
         public ShowAllUsers()
         {
             InitializeComponent();
@@ -27,7 +27,7 @@ namespace UniversitySystem.WinApp.AdminForms
             List<User> users = new List<User>();
             users = service.ShowAllData();
             dgUsers.DataSource = users ;
-            if( Falg == 1)
+            if( Flag == 1)
             {
                 DataGridViewButtonColumn DeleteBtn = new DataGridViewButtonColumn();
                 DeleteBtn.HeaderText = "Delete";
@@ -44,7 +44,7 @@ namespace UniversitySystem.WinApp.AdminForms
                 dgUsers.Columns.Add(EditBtn);
 
 
-                Falg = 0 ;
+                Flag = 0 ;
             }
         }
 
@@ -73,7 +73,7 @@ namespace UniversitySystem.WinApp.AdminForms
                 User user = service.EditUsers(Counter);
                 EditUsers editUsers = new EditUsers(user);
                 editUsers.user = user;
-                Falg = 1;
+                Flag = 1;
                 this.Close();
                 editUsers.Show();
             }
@@ -82,7 +82,7 @@ namespace UniversitySystem.WinApp.AdminForms
         private void button1_Click(object sender, EventArgs e)
         {
             Admin admin = new Admin();
-            Falg = 1;
+            Flag = 1;
             this.Close();
             admin.Show();
         }

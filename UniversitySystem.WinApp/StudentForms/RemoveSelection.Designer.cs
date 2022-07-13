@@ -28,29 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
             this.button2 = new System.Windows.Forms.Button();
             this.dgAllSelection = new System.Windows.Forms.DataGridView();
-            this.txtID = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.selectionForStudentListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgAllSelection)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.selectionForStudentListBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(221, 653);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 34);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Remove";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(679, 653);
+            this.button2.Location = new System.Drawing.Point(396, 586);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(112, 34);
+            this.button2.Size = new System.Drawing.Size(191, 62);
             this.button2.TabIndex = 1;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
@@ -58,54 +50,60 @@
             // 
             // dgAllSelection
             // 
+            this.dgAllSelection.AutoGenerateColumns = false;
+            this.dgAllSelection.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgAllSelection.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgAllSelection.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgAllSelection.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.iDDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn});
+            this.dgAllSelection.DataSource = this.selectionForStudentListBindingSource;
             this.dgAllSelection.Location = new System.Drawing.Point(75, 50);
             this.dgAllSelection.Name = "dgAllSelection";
             this.dgAllSelection.RowHeadersWidth = 62;
             this.dgAllSelection.RowTemplate.Height = 33;
-            this.dgAllSelection.Size = new System.Drawing.Size(878, 350);
+            this.dgAllSelection.Size = new System.Drawing.Size(844, 350);
             this.dgAllSelection.TabIndex = 2;
+            this.dgAllSelection.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAllSelection_CellClick);
             // 
-            // txtID
+            // iDDataGridViewTextBoxColumn
             // 
-            this.txtID.Location = new System.Drawing.Point(195, 448);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(758, 31);
-            this.txtID.TabIndex = 3;
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
             // 
-            // label1
+            // nameDataGridViewTextBoxColumn
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(117, 454);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 25);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "ID";
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // selectionForStudentListBindingSource
+            // 
+            this.selectionForStudentListBindingSource.DataSource = typeof(UniversitySystem.Classes.SelectionForStudentList);
             // 
             // RemoveSelection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 760);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtID);
             this.Controls.Add(this.dgAllSelection);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Name = "RemoveSelection";
             this.Text = "RemoveSelection";
             ((System.ComponentModel.ISupportInitialize)(this.dgAllSelection)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.selectionForStudentListBindingSource)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private Button button1;
         private Button button2;
         private DataGridView dgAllSelection;
-        private TextBox txtID;
-        private Label label1;
+        private BindingSource selectionForStudentListBindingSource;
+        private DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
     }
 }

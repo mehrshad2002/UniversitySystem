@@ -91,11 +91,11 @@
             // 
             // btnShowStudents
             // 
-            this.btnShowStudents.Location = new System.Drawing.Point(279, 201);
+            this.btnShowStudents.Location = new System.Drawing.Point(279, 141);
             this.btnShowStudents.Name = "btnShowStudents";
-            this.btnShowStudents.Size = new System.Drawing.Size(229, 50);
+            this.btnShowStudents.Size = new System.Drawing.Size(229, 110);
             this.btnShowStudents.TabIndex = 5;
-            this.btnShowStudents.Text = "Show All User ( Student And Admin )";
+            this.btnShowStudents.Text = "Edit Remove Users";
             this.btnShowStudents.UseVisualStyleBackColor = true;
             this.btnShowStudents.Click += new System.EventHandler(this.btnShowStudents_Click);
             // 

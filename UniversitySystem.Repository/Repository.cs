@@ -57,6 +57,51 @@ namespace UniversitySystem.Repository
             return selectionList;
         }
 
+        // Remove Selection 
+        public bool RemoveSelectionLessonNew(int counter, User user)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+
+            // 1 find All Relate data
+            string querystring =  "select  Selction.ID as SelectionID , SelectionList.ID as ID , Selction.CalssTime as Time ,Selction.Name as Name , SelectionList.Student_ID as StudentID" +
+                 " from SelectionList join Selction on SelectionList.Selection_ID = Selction.ID" +
+                 $" where SelectionList.Student_ID = {user.CardID}";
+            int i4 = 0;
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);//for read table from db 
+            DataSet tables = new DataSet(); //can read data from row and column 
+            adapter.Fill(tables);
+
+            //find Selection ID wich will be deleted 
+            var SelectRow = tables.Tables[0].Rows[counter];
+            int ID = Convert.ToInt32(SelectRow.ItemArray[1]);
+
+            // 2 
+            string deleteQuery = "delete from SelectionList " +
+                $"where ID = {ID} ";
+
+            int i5 = 0;
+            SqlCommand DeleteCmd = new SqlCommand(deleteQuery, con);
+            try
+            {
+                int Result = DeleteCmd.ExecuteNonQuery();
+                if (Result == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
         public List<Selection> AllSelectionNew(int CollegeID)
         {
             string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";

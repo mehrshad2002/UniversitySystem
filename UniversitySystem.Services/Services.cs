@@ -89,6 +89,11 @@ namespace UniversitySystem.Services
             return repository.SaveEditUser(newUser , oldID);
         }
 
+        public bool RemoveSelectionLessonNew(int counter, User user)
+        {
+            return repository.RemoveSelectionLessonNew(counter, user);
+        }
+
         public string SayLessonName(int lessonID)
         {
             return repository.SayLessonName(lessonID);

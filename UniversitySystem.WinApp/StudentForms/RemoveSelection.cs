@@ -16,39 +16,62 @@ namespace UniversitySystem.WinApp.StudentForms
 {
     public partial class RemoveSelection : Form
     {
-        public User user;
-        public RemoveSelection(User user)
+        public static User user;
+        static int Flag = 1;
+
+        public RemoveSelection(User NewUser)
         {
             InitializeComponent();
-            this.user = user;
-            int StudentID = user.CardID;
-            ServiceClass service = new ServiceClass();
-            List<SelectionForStudentList> SelectionList = new List<SelectionForStudentList>();
-            SelectionList = service.SelectionList(StudentID);
-            dgAllSelection.DataSource = SelectionList ;
-            
+            user = NewUser;
+            DataGridListSelection();
         }
 
+        private void DataGridListSelection()
+        {
+            ServiceClass service = new ServiceClass();
+            List<SelectionForStudentList> SelectionList = new List<SelectionForStudentList>();
+            SelectionList = service.SelectionList(user.CardID);//find all selection related 
+            dgAllSelection.DataSource = SelectionList;// All Data is Loaded 
+
+            if( Flag == 1)
+            {
+                //Create Delete Button for Grid
+                DataGridViewButtonColumn DeleteBtn = new DataGridViewButtonColumn();
+                DeleteBtn.HeaderText = "Delete";
+                DeleteBtn.Text = "Delete";
+                DeleteBtn.Name = "Delete";
+                DeleteBtn.UseColumnTextForButtonValue = true;
+                dgAllSelection.Columns.Add(DeleteBtn);
+
+                //And Never Bulit Again 
+                Flag = 0;
+            }
+        }
+
+        private void dgAllSelection_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ServiceClass service = new ServiceClass();
+
+            //Delete Click
+            if(e.ColumnIndex == 2 )
+            {
+                int Counter = e.RowIndex;
+                bool Result = service.RemoveSelectionLessonNew(Counter , user);
+                if (Result)
+                {
+                    MessageBox.Show("Done");
+                    DataGridListSelection();
+                }
+                else
+                {
+                    MessageBox.Show("Somthings Wrong");
+                    DataGridListSelection();
+                }
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             ServiceClass service = new ServiceClass();
-            if(txtID.Text == "")
-            {
-                txtID.Text = "0";
-            }
-            int ID = Convert.ToInt32(txtID.Text);
-            bool Result = service.RemoveSelectionStudent(ID);
-
-            if( Result)
-            {
-                MessageBox.Show("Done");
-                txtID.ResetText();
-            }
-            else
-            {
-                MessageBox.Show("Faild");
-                txtID.ResetText();
-            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -57,5 +80,6 @@ namespace UniversitySystem.WinApp.StudentForms
             this.Close();
             studentMain.Show();
         }
+
     }
 }
