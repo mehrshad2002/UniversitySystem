@@ -65,6 +65,7 @@
             // 
             // dgSelection
             // 
+            this.dgSelection.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgSelection.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSelection.Location = new System.Drawing.Point(115, 42);
             this.dgSelection.Name = "dgSelection";

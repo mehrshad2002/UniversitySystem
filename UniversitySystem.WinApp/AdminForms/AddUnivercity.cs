@@ -22,24 +22,30 @@ namespace UniversitySystem.WinApp.AdminForms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            Random random = new Random();
             Univercity univercity = new Univercity();
-            univercity.Name = textBoxName.Text;
-            univercity.Id = Convert.ToInt32(textBoxID.Text);
-
-            ServiceClass service = new ServiceClass();
-            bool Result = service.AddUnivercity(univercity);
-
-            if( Result)
+            if(textBoxName.Text == " " || textBoxName.Text == "")
             {
-                MessageBox.Show("Univercity Was Created !");
-                textBoxID.ResetText();
-                textBoxName.ResetText();
+                MessageBox.Show("Faild!");
             }
             else
             {
-                MessageBox.Show("Faild!");
-                textBoxID.ResetText();
-                textBoxName.ResetText();
+                univercity.Name = textBoxName.Text;
+                univercity.Id = random.Next(45, 75 );
+
+                ServiceClass service = new ServiceClass();
+                bool Result = service.AddUnivercity(univercity);
+
+                if( Result)
+                {
+                    MessageBox.Show("Univercity Was Created !");
+                    textBoxName.ResetText();
+                }
+                else
+                {
+                    MessageBox.Show("Faild!");
+                    textBoxName.ResetText();
+                }
             }
         }
 

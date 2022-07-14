@@ -31,11 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.btnCancel = new System.Windows.Forms.Button();
             this.dgCollege = new System.Windows.Forms.DataGridView();
+            this.collegeAndUnivercityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.collegeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.collegeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.univercityNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.collegeAndUnivercityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgCollege)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.collegeAndUnivercityBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -59,8 +58,7 @@
             this.dgCollege.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.collegeIDDataGridViewTextBoxColumn,
             this.collegeNameDataGridViewTextBoxColumn,
-            this.univercityNameDataGridViewTextBoxColumn,
-            this.Delete});
+            this.univercityNameDataGridViewTextBoxColumn});
             this.dgCollege.DataSource = this.collegeAndUnivercityBindingSource;
             this.dgCollege.Location = new System.Drawing.Point(345, 196);
             this.dgCollege.Name = "dgCollege";
@@ -70,6 +68,10 @@
             this.dgCollege.TabIndex = 6;
             this.dgCollege.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCollege_CellClick);
             this.dgCollege.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // collegeAndUnivercityBindingSource
+            // 
+            this.collegeAndUnivercityBindingSource.DataSource = typeof(UniversitySystem.Classes.CollegeAndUnivercity);
             // 
             // collegeIDDataGridViewTextBoxColumn
             // 
@@ -91,16 +93,6 @@
             this.univercityNameDataGridViewTextBoxColumn.HeaderText = "UnivercityName";
             this.univercityNameDataGridViewTextBoxColumn.MinimumWidth = 8;
             this.univercityNameDataGridViewTextBoxColumn.Name = "univercityNameDataGridViewTextBoxColumn";
-            // 
-            // Delete
-            // 
-            this.Delete.HeaderText = "Delete";
-            this.Delete.MinimumWidth = 8;
-            this.Delete.Name = "Delete";
-            // 
-            // collegeAndUnivercityBindingSource
-            // 
-            this.collegeAndUnivercityBindingSource.DataSource = typeof(UniversitySystem.Classes.CollegeAndUnivercity);
             // 
             // RemoveCollege
             // 
@@ -125,6 +117,5 @@
         private DataGridViewTextBoxColumn collegeIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn collegeNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn univercityNameDataGridViewTextBoxColumn;
-        private DataGridViewButtonColumn Delete;
     }
 }

@@ -28,7 +28,7 @@ namespace UniversitySystem.WinApp.AdminForms
             colleges = service.ReadAllCollegeJoin();
             dgCollege.DataSource = colleges ;
 
-            if( Flag == 1)
+            if( Flag == 1 )
             {
                 DataGridViewButtonColumn DeleteBtn = new DataGridViewButtonColumn();
                 DeleteBtn.HeaderText = "Delete";
@@ -42,7 +42,7 @@ namespace UniversitySystem.WinApp.AdminForms
         }
         private void dgCollege_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 4)
+            if (e.ColumnIndex == 3)
             {
                 ServiceClass service = new ServiceClass();
                 int Counter = e.RowIndex;
@@ -65,6 +65,7 @@ namespace UniversitySystem.WinApp.AdminForms
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Admin admin = new Admin();
+            Flag = 1 ; 
             this.Close();
             admin.Show();
         }
