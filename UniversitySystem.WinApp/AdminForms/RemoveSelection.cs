@@ -15,43 +15,65 @@ namespace UniversitySystem.WinApp.AdminForms
 {
     public partial class RemoveSelection : Form
     {
+        public static int  Flag = 1;
         public RemoveSelection()
         {
             InitializeComponent();
+            AddButtonColumn();
+
+        }
+
+        private void AddButtonColumn()
+        {
             ServiceClass service = new ServiceClass();
             List<Selection> selections = new List<Selection>();
             selections = service.AllSelection();
-            dgSelection.DataSource = selections;
+
+            dgSelectionNew.DataSource = selections;
+            if (Flag == 1)
+            {
+                DataGridViewButtonColumn DeleteBtn = new DataGridViewButtonColumn();
+                DeleteBtn.HeaderText = "Delete";
+                DeleteBtn.Text = "Delete";
+                DeleteBtn.Name = "Delete";
+                DeleteBtn.UseColumnTextForButtonValue = true;
+                dgSelectionNew.Columns.Add(DeleteBtn);
+
+                Flag = 0;
+            }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ServiceClass service = new ServiceClass();
-            int ID = Convert.ToInt32(txtID.Text);
-            bool Result = service.RemoveSelection(ID);
-
-            if (Result)
-            {
-                MessageBox.Show("Done");
-                txtID.ResetText();
-            }
-            else
-            {
-                MessageBox.Show("Faild!");
-                txtID.ResetText();
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Admin admin = new Admin();
+            Flag = 1;
             this.Close();
             admin.Show();
+        }
+
+        private void dgSelectionNew_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 4)
+            {
+                ServiceClass service = new ServiceClass();
+                int Counter = e.RowIndex;
+                bool Result = service.RemoveSelectionNew(Counter);
+                if (Result)
+                {
+                    MessageBox.Show("Done!");
+                    AddButtonColumn();
+                }
+                else
+                {
+                    MessageBox.Show("Faild!");
+                }
+            }
         }
     }
 }

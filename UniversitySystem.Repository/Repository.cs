@@ -102,6 +102,45 @@ namespace UniversitySystem.Repository
             return true;
         }
 
+        public bool RemoveSelectionNewNew(int counter)
+        {
+            string ConString = @"Data Source=DESKTOP-6E77HUQ;Initial Catalog=db-US;Integrated Security=True";
+            SqlConnection con = new SqlConnection(ConString);
+            con.Open();
+
+            // 1 find All Relate data
+            string querystring = "select * from Selction ";
+            SqlCommand cmd = new SqlCommand(querystring, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);//for read table from db 
+            DataSet tables = new DataSet(); //can read data from row and column 
+            adapter.Fill(tables);
+
+            //find Selection ID wich will be deleted 
+            var SelectRow = tables.Tables[0].Rows[counter];
+            int ID = Convert.ToInt32(SelectRow.ItemArray[0]);
+
+            int i = 0;
+            string queryDelete = "delete from Selction " +
+                $"where ID = {ID}";
+            SqlCommand cmdDelete = new SqlCommand(queryDelete,con);
+            int i2 = 0;
+            try
+            {
+                int Result = cmdDelete.ExecuteNonQuery();
+                if (Result != 0 )
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }catch(Exception e)
+            {
+                return false;
+            }
+        }
+
         // Remove Selection 
         public bool RemoveSelectionLessonNew(int counter, User user)
         {
@@ -113,7 +152,6 @@ namespace UniversitySystem.Repository
             string querystring =  "select  Selction.ID as SelectionID , SelectionList.ID as ID , Selction.CalssTime as Time ,Selction.Name as Name , SelectionList.Student_ID as StudentID" +
                  " from SelectionList join Selction on SelectionList.Selection_ID = Selction.ID" +
                  $" where SelectionList.Student_ID = {user.CardID}";
-            int i4 = 0;
             SqlCommand cmd = new SqlCommand(querystring, con);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);//for read table from db 
             DataSet tables = new DataSet(); //can read data from row and column 

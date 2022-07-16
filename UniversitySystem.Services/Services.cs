@@ -104,6 +104,11 @@ namespace UniversitySystem.Services
             return repository.RemoveSelectionLessonNew(counter, user);
         }
 
+        public bool RemoveSelectionNew(int Counter)
+        {
+            return repository.RemoveSelectionNewNew(Counter);
+        }
+
         public string SayLessonName(int lessonID)
         {
             return repository.SayLessonName(lessonID);

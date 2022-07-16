@@ -65,18 +65,6 @@ namespace UniversitySystem.WinApp.AdminForms
                     MessageBox.Show("Faild!");
                 }
             }
-
-            if(e.ColumnIndex == 5)
-            {
-                ServiceClass service = new ServiceClass();
-                int Counter = e.RowIndex;
-                User user = service.EditUsers(Counter);
-                EditUsers editUsers = new EditUsers(user);
-                editUsers.user = user;
-                Flag = 1;
-                this.Close();
-                editUsers.Show();
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)
