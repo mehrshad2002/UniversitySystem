@@ -25,42 +25,57 @@ namespace UniversitySystem.WinApp
         {
             User user = new User();
             var username = Convert.ToInt32(txtUsername.Text);
-            var password = txtPassword.Text;
+            string password = txtPassword.Text;
+            char[] b = new char[password.Length];
 
-
-            if( user.FlagPass != true)
+            for (int i = 0; i < password.Length; i++)
             {
-                var result = service.Login(username, password , user);
-                if (result)
-                {
-                    if(user.Poss == 400)
-                    {
-                        StudentMain studentMain = new StudentMain();
-                        //studentMain.user = user
-                        StudentMain.user = user;
-                        studentMain.Show();
-                        this.Hide();
-
-                    }
-                    else if( user.Poss == 300)
-                    {
-                        Admin admin = new Admin();
-                        admin.user = user;
-                        admin.Show();
-                        this.Hide();
-                    }
-                }
-                else
+                b[i] = (char)password[i];
+                if (b[i] == '*' || b[i] == '/' || b[i] == '=' || b[i] == '#')
                 {
                     txtUsername.Text = "";
                     txtPassword.Text = "";
                     MessageBox.Show("Invalid Username Or Password");
                 }
-            }
-            else
-            {
+                else
+                {
+                    if ( user.FlagPass != true)
+                    {
+                        var result = service.Login(username, password , user);
+                        if (result)
+                        {
+                            if(user.Poss == 400)
+                            {
+                                StudentMain studentMain = new StudentMain();
+                                //studentMain.user = user
+                                StudentMain.user = user;
+                                studentMain.Show();
+                                this.Hide();
 
+                            }
+                            else if( user.Poss == 300)
+                            {
+                                Admin admin = new Admin();
+                                admin.user = user;
+                                admin.Show();
+                                this.Hide();
+                            }
+                        }
+                        else
+                        {
+                            txtUsername.Text = "";
+                            txtPassword.Text = "";
+                            MessageBox.Show("Invalid Username Or Password");
+                        }
+                    }
+                    else
+                    {
+
+                    }
+                }
             }
+
+
         }
 
         private void btnExit_Click(object sender, EventArgs e)
